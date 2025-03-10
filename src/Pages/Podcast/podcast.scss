@@ -1,0 +1,78 @@
+.podcastPage {
+    min-height: 100vh;
+    color: white;
+    padding-bottom: 6rem;
+    display: flex;
+    justify-content: center;
+
+    .episodesContainer {
+        width: 100%;
+        max-width: 1200px;
+        padding: 2rem 1rem;
+
+        .sectionTitle {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .episodeList {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .episodeItem {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: opacity 0.2s ease;
+
+            .playButton {
+                width: 56px;
+                height: 56px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid #c084fc;
+                border-radius: 50%;
+                color: #c084fc;
+                background: none;
+                svg {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+
+            .episodeDetails {
+                width: 30%;
+                .episodeNumber {
+                    font-size: 0.75rem;
+                    font-weight: bold;
+                    color: #cbd5e1;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    margin-bottom: 0.25rem;
+                }
+
+                .episodeTitle {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #fff;
+                    white-space: normal;
+                    word-break: break-word;
+                    max-width: 100%;
+                }
+            }
+
+            .episodeDescription {
+                font-size: 0.875rem;
+                color: #FFF;
+                white-space: normal;
+                word-break: break-word;
+            }
+        }
+    }
+}

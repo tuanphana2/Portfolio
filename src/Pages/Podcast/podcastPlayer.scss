@@ -1,0 +1,152 @@
+.podcastPlayer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: rgba(100, 100, 100, 1);
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    z-index: 50;
+    gap: 1rem;
+  }
+  
+  .closeBtn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    
+    :hover {
+      color: #000;
+    }
+  }
+  
+  .cover {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .trackDetails {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  
+    h3 {
+      font-size: 28px;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  
+    .controlsContainer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+  
+      .seekBar {
+        flex: 1;
+        cursor: pointer;
+      }
+  
+      .timeDisplay {
+        font-size: 0.875rem;
+        color: #d1d5db;
+        white-space: nowrap;
+      }
+    }
+  }
+  
+  .volumeWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  
+    .volumeBtn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+  
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  
+    .verticalVolume {
+      position: absolute;
+      margin-bottom: 20px;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%) rotate(-90deg);
+      height: 80px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      cursor: pointer;
+    }
+  
+    .verticalVolume.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  
+  .playerButtons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  
+    button {
+      background: none;
+      border: none;
+      color: #fff;
+      border-radius: 50%;
+      padding: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    
+      svg {
+        background: none;
+        width: 20px;
+        height: 20px;
+      }
+
+      :hover {
+        background: none;
+      }
+    }
+
+    :hover {
+      background: #555555;
+    }
+    
+    .playPause {
+      background: none;
+      border: solid 3px #fff;
+      border-radius: 50%;
+    }
+
+    .playPause:hover{
+      background: none;
+      border: solid 3px #AAD302;
+
+      svg {
+        color: #AAD302;
+      }
+    }
+  }
+  
