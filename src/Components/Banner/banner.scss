@@ -1,4 +1,3 @@
-//banner
 .banner__section {
   z-index: 0;
   background: url('/src/assets/img/banner/landmark81.png');
@@ -48,10 +47,13 @@
     }
   }
   @include breakpoint(max-xxxl) {
-    @include breakpoint(xl) {
-      padding-left: 40px;
-    }
+    padding-left: 40px;
   }
+
+  @include breakpoint(xl) {
+    padding-left: 40px;
+  }
+
   @include breakpoint(max-xxl) {
     .bn__currently {
       font-size: 24px;
@@ -329,6 +331,8 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  font-size: 80px;
+  margin-bottom: 150px;
 }
 
 .designer-slide-item {
@@ -345,4 +349,5 @@
   font-size: 80%;
   font-weight: bold;
   position: relative;
+  cursor: pointer;
 }

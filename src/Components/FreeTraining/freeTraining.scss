@@ -1,11 +1,15 @@
 .free-training-section {
   background-color: #202020;
-  padding: 60px 15px;
+  padding: 50px 15px;
   font-family: "Arial", sans-serif;
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
+
+    @media (max-width: 768px) {
+      max-width: 95%;
+    }
   }
 
   .column {
@@ -23,7 +27,7 @@
   .divider-text {
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 32px;
+    font-size: 26px;
     letter-spacing: 1px;
     position: relative;
     margin-bottom: 15px;
@@ -39,11 +43,15 @@
       background-color: #fff;
       margin: 0 10px;
     }
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
   }
 
   // Main Heading (Success without sacrifice)
   .heading-title {
-    font-size: 48px;
+    font-size: 38px;
     font-weight: bold;
     margin: 0;
     color: #fff;
@@ -51,19 +59,33 @@
 
     .txt-change {
       font-family: "Lucida Handwriting", cursive;
-      font-size: 82px;
+      font-size: 68px;
       color: #fff;
       font-weight: bold;
-      margin-right: 25px;
+      margin-right: 15px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+
+      .txt-change {
+        font-size: 40px;
+        margin-right: 0;
+      }
     }
   }
 
   // Sub Heading (How to Avoid Burnout)
   .sub-heading {
-    font-size: 18px;
+    font-size: 16px;
     color: #fff;
     margin: 15px 0 20px;
     font-weight: normal;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      margin: 10px 0 15px;
+    }
   }
 
   // Divider Line
@@ -72,37 +94,78 @@
     width: 100%;
     border-top: 1px solid #ddd;
     margin: 15px 0;
+
+    @media (max-width: 768px) {
+      margin: 10px 0;
+    }
   }
 
   // Button
   .btn-access {
     display: flex;
-    justify-content: center;
+    justify-items: center;
+    gap: 100px;
     margin-top: 15px;
 
-    .button-link {
-      background: linear-gradient(to right, #d3856b, #c76c56);
+    .button-link-1 {
+      background: linear-gradient(to right, #00B320, #0B6600);
       color: #fff;
-      padding: 15px 40px;
-      font-size: 32px;
+      padding: 10px 24px;
+      font-size: 22px;
       text-transform: uppercase;
       font-weight: bold;
       text-decoration: none;
       border-radius: 5px;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       transition: all 0.3s ease;
 
       &:hover {
-        background: linear-gradient(to right, #c76c56, #b85a44);
+        background: linear-gradient(to right, #00A31E, #0B5900);
         transform: translateY(-2px);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
       }
 
       .button-icon {
+       font-size: 16px;
+      }
+
+      @media (max-width: 768px) {
         font-size: 18px;
+       padding: 8px 20px;
+      }
+    }
+
+    .button-link-2 {
+      background: linear-gradient(to right, #F8AF0A, #FF0000);
+      color: #fff;
+      padding: 10px 24px;
+      font-size: 22px;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(to right, #F9BF39, #FF3333);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .button-icon {
+        font-size: 16px;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 18px;
+        padding: 8px 20px;
       }
     }
   }

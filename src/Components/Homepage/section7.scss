@@ -1,0 +1,106 @@
+.my-story {
+    padding: 80px 20px;
+    background: linear-gradient(to bottom, #f5fdfd, #d7f2f2);
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    .col-lg-6 {
+        flex: 1;
+        width: 100%;
+    }
+
+    .story-content {
+        text-align: center;
+
+        .story-header {
+            margin-bottom: 20px;
+
+            .story-title {
+                font-size: 36px;
+                font-weight: bold;
+                color: #000;
+                font-family: 'Georgia', serif;
+
+                @media (max-width: 768px) {
+                    font-size: 28px;
+                }
+            }
+
+            .story-subtitle {
+                font-size: 24px;
+                font-weight: bold;
+                color: #000;
+
+                @media (max-width: 768px) {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .story-description {
+            p {
+                font-size: 16px;
+                color: #333;
+                margin-bottom: 16px;
+
+                @media (max-width: 768px) {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .read-story-btn {
+            display: inline-block;
+            background: transparent;
+            color: #000;
+            border: 2px solid #f08f8f;
+            padding: 12px 24px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            width: 100%;
+
+            &:hover {
+                background: #f08f8f;
+                color: #fff;
+            }
+
+            @media (max-width: 768px) {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+        }
+    }
+
+    .story-image {
+        img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+            @media (max-width: 768px) {
+                max-height: 250px;
+            }
+        }
+    }
+}

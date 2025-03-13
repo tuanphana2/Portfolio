@@ -1,0 +1,138 @@
+.section-3 {
+    background-color: #202020;
+    padding: 50px 15px;
+    font-family: "Arial", sans-serif;
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        @media (max-width: 768px) {
+            max-width: 95%;
+        }
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    .widget-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    // Divider Text (FREE TRAINING)
+    .divider-text {
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 20px;
+        letter-spacing: 1px;
+        position: relative;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:before,
+        &:after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #fff;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 14px;
+        }
+    }
+
+    // Main Heading (Success without sacrifice)
+    .widget-container {
+        justify-items: center;
+
+        .heading-title {
+            position: relative;
+            font-size: 48px;
+            font-weight: bold;
+            margin: 0;
+            color: #fff;
+            line-height: 1.5;
+            max-width: 85%;
+
+            @media (max-width: 768px) {
+                font-size: 36px;
+                max-width: 95%;
+            }
+        }
+    }
+
+    // Sub Heading (How to Avoid Burnout)
+    .sub-heading {
+        color: #fff;
+        margin: 15px 0 20px;
+        font-weight: normal;
+
+        p {
+            font-size: 22px;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 14px;
+            margin: 10px 0 15px;
+        }
+    }
+
+    // Divider Line
+    .divider-line,
+    .final-divider {
+        width: 100%;
+        border-top: 1px solid #ddd;
+        margin: 15px 0;
+
+        @media (max-width: 768px) {
+            margin: 10px 0;
+        }
+    }
+
+    // Button
+    .btn-access {
+        display: flex;
+        justify-items: center;
+        gap: 100px;
+        margin-top: 15px;
+
+        .button-link {
+            background: linear-gradient(to right, #00B320, #0B6600);
+            color: #fff;
+            padding: 10px 24px;
+            font-size: 22px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: linear-gradient(to right, #00A31E, #0B5900);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .button-icon {
+                font-size: 16px;
+            }
+
+            @media (max-width: 768px) {
+                font-size: 18px;
+                padding: 8px 20px;
+            }
+        }
+    }
+}

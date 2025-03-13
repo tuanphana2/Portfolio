@@ -1,6 +1,5 @@
 import React from 'react';
-import { Facebook, Twitter, Linkedin, Globe, Instagram, ArrowUpShort } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { Facebook, Twitter, Linkedin, Globe, Instagram } from 'react-bootstrap-icons';
 
 const socialLinks = [
   {

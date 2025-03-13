@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './freeTraining.scss';
 import imgBG from '../../assets/img/banner/tachnen.png';
 
 const FreeTrainingSection = () => {
@@ -9,13 +8,12 @@ const FreeTrainingSection = () => {
       <div className="container">
         <div className="column">
           <div className="widget-wrap">
-
             {/* Divider Text */}
             <div className="divider-text">
               <div className="widget-container">
                 <div className="divider">
                   <span className="divider-separator">
-                    <div className="divider-text-element">free training</div>
+                    <div className="divider-text-element">CÓ PHẢI BẠN ĐANG TÌM KIẾM?</div>
                   </span>
                 </div>
               </div>
@@ -25,7 +23,8 @@ const FreeTrainingSection = () => {
             <div className="heading">
               <div className="widget-container">
                 <h2 className="heading-title">
-                  <span className="txt-change">Success</span> without sacrifice
+                  CÁCH ĐỂ SỞ HỮU MỘT DOANH NGHIỆP HOẶC SỞ HỮU CHO MÌNH MÔ HÌNH DOANH NGHIỆP CHUYÊN
+                  GIA?
                 </h2>
               </div>
             </div>
@@ -34,7 +33,7 @@ const FreeTrainingSection = () => {
             <div className="sub-heading">
               <div className="widget-container">
                 <p className="heading-title">
-                  How to Avoid Burnout Without Stepping Back From Your Career
+                  Mà Không Phải Tốn quá nhiều công sức, chịu rủi ro và từ bỏ công việc hiện tại?
                 </p>
               </div>
             </div>
@@ -42,13 +41,23 @@ const FreeTrainingSection = () => {
             {/* Button */}
             <div className="btn-access">
               <a
-                className="button-link"
-                href="https://www.thegoodlifeinstitute.com/registernow/"
+                className="button-link-1"
+                href="https://betraining.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <span className="button-content-wrapper">
-                  <span className="button-text">get instant access</span>
+                  <span className="button-text">Khởi Sự Doanh Nghiệp</span>
+                </span>
+              </a>
+              <a
+                className="button-link-2"
+                href="/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="button-content-wrapper">
+                  <span className="button-text">Trở Thành Chuyên Gia</span>
                 </span>
               </a>
             </div>

@@ -6,6 +6,12 @@
 @import './base/typography.scss';
 @import './base/animation';
 
+// ------------ Home styles
+@import '../Components/Homepage/home.scss';
+
+// ------------ Free Training style
+@import '../Components/FreeTraining/freeTraining.scss';
+
 // ------------ Shared style
 @import '../Components/Shared/LightBox/lightBox.scss';
 @import '../Components/Shared/PageHeader/pageHeader.scss';

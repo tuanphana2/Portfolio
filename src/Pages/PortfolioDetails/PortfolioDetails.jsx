@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import detailbg from '../../assets/img/portfolio/prot-detailsbig.png';

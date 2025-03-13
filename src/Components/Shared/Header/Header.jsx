@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { List, ArrowRight } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';

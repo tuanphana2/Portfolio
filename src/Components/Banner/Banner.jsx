@@ -10,6 +10,7 @@ import dial from '../../assets/img/banner/dial.png';
 import scrollDown from '../../assets/img/banner/scroll-down.png';
 import slideBarBackground from '../../assets/img/banner/slide-bar-background.png';
 import VideoPlay from '../Shared/VideoPlay/VideoPlay';
+import "swiper/css";
 
 const socalIcon = [
   {
@@ -35,7 +36,16 @@ const socalIcon = [
   },
 ];
 
-const levels = ['Beginner', 'Junior', 'Senior', 'Expert'];
+const levels = [
+  'THU NHẬP CAO',
+  'TỰ DO',
+  'ẢNH HƯỞNG',
+  'TÔN TRỌNG',
+  'DOANH NHÂN',
+  'CHUYÊN GIA',
+  'TOÀN CẦU',
+  'NIỀM VUI',
+];
 
 const Banner = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);

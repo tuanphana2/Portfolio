@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollRestoration } from 'react-router-dom';
 
-import About from '../Components/About/About';
-import Awards from '../Components/About/Awards';
 import Banner from '../Components/Banner/Banner';
-import Blogs from '../Components/Blogs/Blogs';
 import FreeTraining from '../Components/FreeTraining/FreeTraining';
-import Section2 from '../Components/Homepage/Alone';
-import Section1 from '../Components/Homepage/Hi';
-import Section3 from '../Components/Homepage/LikeYou';
-import Section5 from '../Components/Homepage/Story';
-import Section4 from '../Components/Homepage/Success';
-import Metting from '../Components/Metting/Metting';
-import Projects from '../Components/Projects/Projects';
-import Services from '../Components/Services/Services';
-import MarqueeWapper from '../Components/Shared/Marquee/MarqueeWapper';
+import Section1 from '../Components/Homepage/Section1';
+import Section2 from '../Components/Homepage/Section2';
+import Section3 from '../Components/Homepage/Section3';
+import Section4 from '../Components/Homepage/Section4';
+import Section5 from '../Components/Homepage/Section5';
+import Section6 from '../Components/Homepage/Section6';
+import Section7 from '../Components/Homepage/Section7';
 import Preloader from '../Components/Shared/Preloader/Preloader';
-import Testimonial from '../Components/Testimonial/Testimonial';
-import WorkeProcess from '../Components/WorkProcess/WorkProcess';
-import { images, images2 } from '../Utlits/marqueeItems';
 
 const Home = () => {
   const [isFetching, setIsFetching] = useState(true);
@@ -39,14 +31,8 @@ const Home = () => {
       <Section3 />
       <Section4 />
       <Section5 />
-      {/* <MarqueeWapper direction="left" images={images} /> */}
-      {/* <Awards /> */}
-      {/* <Projects /> */}
-      {/* <Metting /> */}
-      {/* <MarqueeWapper direction="right" images={images2} /> */}
-      {/* <Services isHeading={true} /> */}
-      {/* <WorkeProcess /> */}
-      {/* <Testimonial /> */}
+      <Section6 />
+      <Section7 />
       <FreeTraining />
       <ScrollRestoration />
     </>
