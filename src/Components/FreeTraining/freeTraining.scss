@@ -168,5 +168,11 @@
         padding: 8px 20px;
       }
     }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 20px; // Giảm khoảng cách giữa hai nút trên mobile
+      align-items: center;
+    }
   }
 }

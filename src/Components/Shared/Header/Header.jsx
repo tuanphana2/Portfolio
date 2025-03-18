@@ -20,18 +20,21 @@ const menuList = [
   {
     id: 3,
     path: '/',
-    section: '/Programs',
     name: 'Programs',
     dropDown: [
       {
         id: 1,
-        path: '/all-services',
-        name: 'Services',
+        path: 'https://betraining.org/',
+        name: 'Be Training',
+        target: '_blank',
+        rel: 'noopener noreferrer',
       },
       {
         id: 2,
-        path: '/service-details',
-        name: 'Service Details',
+        path: '/',
+        name: 'Mentor X',
+        target: '_blank',
+        rel: 'noopener noreferrer',
       },
     ],
   },
@@ -116,11 +119,17 @@ const Header = () => {
                   </HashLink>
                   {dropDown?.length && (
                     <ul className={`sub-menu ${dropDownId === id ? 'sub-menu_active' : ''}`}>
-                      {dropDown.map(({ id, name, path }) => (
+                      {dropDown.map(({ id, name, path, target, rel }) => (
                         <li key={id}>
-                          <HashLink smooth to={path}>
-                            {name}
-                          </HashLink>
+                          {path.startsWith('http') ? (
+                            <a href={path} target={target} rel={rel}>
+                              {name}
+                            </a>
+                          ) : (
+                            <HashLink smooth to={path}>
+                              {name}
+                            </HashLink>
+                          )}
                         </li>
                       ))}
                     </ul>
