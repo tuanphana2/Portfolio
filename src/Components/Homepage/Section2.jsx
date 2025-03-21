@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollRestoration } from 'react-router-dom';
 // import './home.scss';
 
-const ServiceDetails = () => {
+const Section2 = () => {
   return (
     <>
       <section className="imagination-story">
@@ -66,4 +66,4 @@ const ServiceDetails = () => {
   );
 };
 
-export default ServiceDetails;
+export default Section2;

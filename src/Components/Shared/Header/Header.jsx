@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { List, ArrowRight } from 'react-bootstrap-icons';
+import { ArrowRight } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 import logo from '../../../assets/img/logo/logo.png';
-import Drawer from '../Drawer/Drawer';
 
 const menuList = [
   {
     id: 1,
-    path: '/',
-    name: 'Home',
+    path: '/about',
+    name: 'GIỚI THIỆU',
   },
   {
     id: 2,
-    path: '/about',
-    name: 'About',
-  },
-  {
-    id: 3,
-    path: '/',
-    name: 'Programs',
+    path: '/programs',
+    name: 'CHƯƠNG TRÌNH',
     dropDown: [
       {
         id: 1,
@@ -39,37 +33,35 @@ const menuList = [
     ],
   },
   {
+    id: 3,
+    path: '/',
+    name: 'THÀNH CÔNG',
+  },
+  {
     id: 4,
     path: '/podcast',
     name: 'Podcast',
   },
   {
     id: 5,
-    path: '/',
-    section: '#blog',
-    name: 'Blog',
+    path: '/all-blog',
+    name: 'BÀI VIẾT',
     dropDown: [
       {
         id: 1,
-        path: '/all-blog',
-        name: 'Blog',
-      },
-      {
-        id: 2,
         path: '/blog-details',
-        name: 'Blog Details',
+        name: 'BÀI VIẾT CHI TIẾT',
       },
     ],
   },
   {
     id: 6,
     path: '/contact',
-    name: 'Contact',
+    name: 'LIÊN HỆ',
   },
 ];
 
 const Header = () => {
-  const [isSidebarActive, setIsSidebarActive] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
   const [dropDownId, setDropDownId] = useState(null);
 
@@ -153,13 +145,9 @@ const Header = () => {
               <span></span>
               <span></span>
             </button>
-            <button onClick={() => setIsSidebarActive(true)} className="remove__click">
-              <List className="icon" />
-            </button>
           </div>
         </div>
       </div>
-      <Drawer isSidebarActive={isSidebarActive} setIsSidebarActive={setIsSidebarActive} />
     </header>
   );
 };

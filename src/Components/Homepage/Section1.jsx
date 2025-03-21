@@ -26,7 +26,7 @@ const listItems = [
     italic: 'Và',
     bold: [
       'Đã vài lần Bạn cũng nghiêm túc cân nhắc việc bỏ đi',
-      'bạn biết điều này là không bền vững'
+      'bạn biết điều này là không bền vững',
     ],
   },
   {
@@ -44,8 +44,7 @@ const Section1 = () => {
         <div className="container">
           <div className="row align-items-center g-4">
             <div className="col-lg-6">
-              <div className="section-1__image">
-              </div>
+              <div className="section-1__image"></div>
               <br />
             </div>
             <div className="col-lg-6">

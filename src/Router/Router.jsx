@@ -10,6 +10,7 @@ import Home from '../Pages/Home';
 import Podcast from '../Pages/Podcast/Podcast';
 import Portfolio from '../Pages/Portfolio/Portfolio';
 import PortfolioDetails from '../Pages/PortfolioDetails/PortfolioDetails';
+import Programs from '../Pages/Program';
 import ServiceDetails from '../Pages/ServiceDetails';
 
 export const router = createBrowserRouter([
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: '/about',
         element: <About />,
+      },
+      {
+        path: '/programs',
+        element: <Programs />,
       },
       {
         path: '/all-services',

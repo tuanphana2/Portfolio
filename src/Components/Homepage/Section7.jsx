@@ -19,24 +19,25 @@ const MyStory = () => {
             <div className="col-lg-6">
               <div className="story-content">
                 <div className="story-header">
-                  <h1 className="story-title">My Story</h1>
-                  <h2 className="story-subtitle">The Two Million Dollar Lesson</h2>
+                  <h1 className="story-title">Câu Chuyện Của Tôi:</h1>
+                  <h2 className="story-subtitle">BÀI HỌC 16 TỶ</h2>
                 </div>
 
                 <div className="story-description">
                   <p>
-                    I’ve spent my entire 20+ year career as a corporate marketing executive. And I understand success.
-                    By the age of 30, I was the youngest executive of a multi-billion dollar company flying all over the
-                    world as the head of international marketing.
+                    Tôi từng nghĩ mình đã chạm đến thành công. Năm 30 tuổi, tôi sở hữu một xưởng gỗ
+                    phát triển mạnh, tiền bạc không thiếu, cuộc sống đáng mơ ước. Tôi cứ ngỡ rằng
+                    mình đã thắng cuộc trong trò chơi kinh doanh.
                   </p>
                   <p>
-                    Until I burned out in 2003, walked away at the age of 33 and moved to the Virgin Islands. Everyone
-                    said I was crazy, but I was too burned out to care.
+                    Rồi tất cả sụp đổ. Một quyết định sai lầm, một cú sốc tài chính – tôi mất trắng
+                    16 tỷ. Mọi thứ tôi xây dựng tan biến, chỉ còn lại hai bàn tay trắng và một bài
+                    học đắt giá.
                   </p>
                 </div>
 
                 <button className="read-story-btn" onClick={handleReadMyStory}>
-                  Read My Story
+                  ĐỌC CÂU CHUYỆN CỦA TÔI
                 </button>
               </div>
             </div>

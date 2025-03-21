@@ -1,0 +1,75 @@
+  .btn-access {
+      display: flex;
+      justify-items: center;
+      gap: 100px;
+      margin-top: 15px;
+
+      .button-link-1 {
+          background: linear-gradient(to right, #00B320, #0B6600);
+          color: #fff;
+          padding: 10px 24px;
+          font-size: 22px;
+          text-transform: uppercase;
+          font-weight: bold;
+          text-decoration: none;
+          border-radius: 5px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+          transition: all 0.3s ease;
+
+          &:hover {
+              background: linear-gradient(to right, #00A31E, #0B5900);
+              transform: translateY(-2px);
+              box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+          }
+
+          .button-icon {
+              font-size: 16px;
+          }
+
+          @media (max-width: 768px) {
+              font-size: 18px;
+              padding: 8px 20px;
+          }
+      }
+
+      .button-link-2 {
+          background: linear-gradient(to right, #F8AF0A, #FF0000);
+          color: #fff;
+          padding: 10px 24px;
+          font-size: 22px;
+          text-transform: uppercase;
+          font-weight: bold;
+          text-decoration: none;
+          border-radius: 5px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+          transition: all 0.3s ease;
+
+          &:hover {
+              background: linear-gradient(to right, #F9BF39, #FF3333);
+              transform: translateY(-2px);
+              box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+          }
+
+          .button-icon {
+              font-size: 16px;
+          }
+
+          @media (max-width: 768px) {
+              font-size: 18px;
+              padding: 8px 20px;
+          }
+      }
+
+      @media (max-width: 768px) {
+          width: 400px;
+          flex-direction: column;
+          gap: 20px; // Giảm khoảng cách giữa hai nút trên mobile
+          align-items: center;
+      }
+  }
