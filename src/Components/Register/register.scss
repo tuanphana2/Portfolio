@@ -1,0 +1,95 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #000 !important;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 45% !important;
+    height: 80vh;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+}
+
+.registration-form {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    label {
+        text-align: left;
+        font-weight: bold;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    button {
+        background-color: #008000;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 10px;
+
+        &:hover {
+            background-color: #006400;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .close-button {
+        font-size: 25px;
+    }
+
+    input {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    button {
+        font-size: 13px;
+        padding: 8px;
+    }
+}

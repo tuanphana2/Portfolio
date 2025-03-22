@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 import logo from '../../../assets/img/logo/logo.png';
+import Register from '../../Register/Register';
 
 const menuList = [
   {
@@ -34,7 +35,7 @@ const menuList = [
   },
   {
     id: 3,
-    path: '/',
+    path: '/success',
     name: 'THÀNH CÔNG',
   },
   {
@@ -89,6 +90,8 @@ const Header = () => {
     setDropDownId(id);
   };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <header className={`header-section `}>
       <div className="container">
@@ -131,12 +134,16 @@ const Header = () => {
             })}
           </ul>
           <div className="menu__components d-flex align-items-center">
-            <Link to="/contact" className="d-flex fw-500 cmn--btn align-items-center gap-2">
-              <span className="get__text">Let's Talk</span>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="d-flex fw-500 cmn--btn align-items-center gap-2"
+            >
+              <span className="get__text">Đăng Ký Ngay</span>
               <span>
                 <ArrowRight className="fz-20" />
               </span>
-            </Link>
+            </button>
+            {isModalOpen && <Register onClose={() => setIsModalOpen(false)} />}
             <button
               onClick={handleHeaderToggle}
               className={`header-bar d-lg-none ${menuActive ? 'active' : ''}`}
