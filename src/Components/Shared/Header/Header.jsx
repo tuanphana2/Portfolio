@@ -40,11 +40,16 @@ const menuList = [
   },
   {
     id: 4,
+    path: '/careers',
+    name: 'SỰ NGHIỆP',
+  },
+  {
+    id: 5,
     path: '/podcast',
     name: 'Podcast',
   },
   {
-    id: 5,
+    id: 6,
     path: '/all-blog',
     name: 'BÀI VIẾT',
     dropDown: [
@@ -56,14 +61,9 @@ const menuList = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     path: '/contact',
     name: 'LIÊN HỆ',
-  },
-  {
-    id: 7,
-    path: '/careers',
-    name: 'SỰ NGHIỆP',
   },
 ];
 
