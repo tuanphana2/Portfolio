@@ -1,0 +1,58 @@
+.section1 {
+    display: flex;
+    width: 100%;
+    margin-top: 40px;
+    padding: 20px;
+    border-left: 5px solid #ff7043; // Màu cam nổi bật
+    background: #202020; // Nền tối
+    border-radius: 5px;
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        .content-left {
+            max-width: 620px;
+            text-align: justify;
+
+            p {
+                color: #ddd; // Chữ sáng hơn để dễ đọc
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 10px;
+            }
+        }
+
+        .content-right {
+            margin-left: 20px;
+            justify-items: center;
+            text-align: center;
+
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); // Đổ bóng cho ảnh nổi bật
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .container {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .content-left {
+            max-width: 90%;
+        }
+
+        .content-right {
+            margin-left: 0;
+        }
+    }
+}

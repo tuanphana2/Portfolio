@@ -1,4 +1,5 @@
 .section-4 {
+  background: #0a0a0a;
   padding: 60px 0;
 
   &__image {
@@ -30,7 +31,7 @@
       position: relative;
       text-align: justify;
       max-width: 605px;
-      font-size: 22px;
+      font-size: 17px;
       font-weight: 500;
       word-spacing: 1.2px;
       line-height: 30px;
@@ -96,9 +97,10 @@
 
   // Divider Text (FREE TRAINING)
   .divider-text {
+    margin-top: 40px;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 22px;
     letter-spacing: 1px;
     position: relative;
     margin-bottom: 15px;
@@ -122,8 +124,8 @@
 
   // Main Heading (Success without sacrifice)
   .heading-title1 {
-    max-width: 700px;
-    font-size: 38px;
+    max-width: 750px;
+    font-size: 34px;
     font-weight: bold;
     margin: 0;
     color: #fff;
@@ -135,7 +137,7 @@
   }
 
   .heading-title2 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     margin: 0;
     color: #fff;

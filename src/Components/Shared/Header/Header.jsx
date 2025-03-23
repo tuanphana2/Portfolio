@@ -60,6 +60,11 @@ const menuList = [
     path: '/contact',
     name: 'LIÊN HỆ',
   },
+  {
+    id: 7,
+    path: '/careers',
+    name: 'SỰ NGHIỆP',
+  },
 ];
 
 const Header = () => {

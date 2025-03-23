@@ -1,0 +1,73 @@
+.section4 {
+    width: 100%;
+    background: #1e1e1e; // Chuyển sang giao diện tối
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .container {
+        max-width: 800px;
+        width: 100%;
+        padding: 0 15px; // Thêm padding để tránh sát mép trên điện thoại
+    }
+
+    h2 {
+        font-size: 26px;
+        font-weight: bold;
+        color: #fbd46d; // Màu vàng nổi bật
+        margin-bottom: 20px;
+        line-height: 1.5;
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 18px;
+        color: #ddd;
+        line-height: 1.8;
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+
+    // Responsive cho tablet & điện thoại
+    @media (max-width: 1024px) {
+        padding: 50px 15px;
+
+        h2 {
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 40px 15px;
+
+        h2 {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: left;
+        }
+    }
+
+    @media (max-width: 480px) {
+        padding: 30px 10px;
+
+        h2 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    }
+}

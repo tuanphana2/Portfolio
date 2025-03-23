@@ -1,5 +1,5 @@
 .section-3 {
-    background-color: #202020;
+    background-color: #121212;
     padding: 50px 15px;
     font-family: "Arial", sans-serif;
 
@@ -27,7 +27,7 @@
     .divider-text {
         font-weight: bold;
         text-transform: uppercase;
-        font-size: 20px;
+        font-size: 18px; // Giảm nhẹ font để cân đối
         letter-spacing: 1px;
         position: relative;
         margin-bottom: 15px;
@@ -45,7 +45,7 @@
         }
 
         @media (max-width: 768px) {
-            font-size: 14px;
+            font-size: 16px;
         }
     }
 
@@ -55,15 +55,15 @@
 
         .heading-title {
             position: relative;
-            font-size: 48px;
+            font-size: 28px; // Điều chỉnh xuống từ 48px để không quá to
             font-weight: bold;
             margin: 0;
             color: #fff;
-            line-height: 1.5;
-            max-width: 85%;
+            line-height: 1.4;
+            max-width: 100%;
 
             @media (max-width: 768px) {
-                font-size: 36px;
+                font-size: 22px;
                 max-width: 95%;
             }
         }
@@ -72,15 +72,15 @@
     // Sub Heading (How to Avoid Burnout)
     .sub-heading {
         color: #fff;
-        margin: 15px 0 20px;
+        margin: 15px 0;
         font-weight: normal;
 
         p {
-            font-size: 22px;
+            font-size: 20px; // Giảm từ 22px xuống để phù hợp hơn
         }
 
         @media (max-width: 768px) {
-            font-size: 14px;
+            font-size: 16px;
             margin: 10px 0 15px;
         }
     }
@@ -101,14 +101,14 @@
     .btn-access {
         display: flex;
         justify-items: center;
-        gap: 100px;
-        margin-top: 15px;
+        gap: 60px; // Giảm khoảng cách giữa các nút để đẹp hơn
+        margin-top: 5px;
 
         .button-link {
             background: linear-gradient(to right, #00B320, #0B6600);
             color: #fff;
             padding: 10px 24px;
-            font-size: 22px;
+            font-size: 20px; // Giảm nhẹ từ 22px xuống để cân đối hơn
             text-transform: uppercase;
             font-weight: bold;
             text-decoration: none;
@@ -126,11 +126,11 @@
             }
 
             .button-icon {
-                font-size: 16px;
+                font-size: 14px;
             }
 
             @media (max-width: 768px) {
-                font-size: 18px;
+                font-size: 16px;
                 padding: 8px 20px;
             }
         }

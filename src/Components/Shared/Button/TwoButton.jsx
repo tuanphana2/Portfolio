@@ -3,7 +3,7 @@ import React from 'react';
 import './twoButton.scss';
 const TwoButton = () => {
   return (
-    <section className="free-training-section">
+    <section className="button-section">
       <div className="container">
         <div className="column">
           <div className="widget-wrap">

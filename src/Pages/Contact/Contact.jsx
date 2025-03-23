@@ -1,44 +1,57 @@
 import React from 'react';
-import { ScrollRestoration } from 'react-router-dom';
 
-import Form from '../../Components/Shared/Form/Form';
-import PageHeader from '../../Components/Shared/PageHeader/PageHeader';
+import './contact.scss';
+import MapSection from './MapSection';
 
-const Contact = () => {
+const ContactPage = () => {
   return (
-    <>
-      <PageHeader heading={"Let's Start Something"} page={"Let's Start Something"} />
-      <section className="contact__section">
+    <div className="contact-page">
+      <section className="behind-header"></section>
+      <section className="contact-section">
         <div className="container">
-          <div className="row g-4">
-            <div className="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
-              <div className="contact__box">
-                <Form isColTwo={false} />
-              </div>
+          <div className="content-left">
+            <h1 className="title">Contact</h1>
+            <div className="contact-cards">
+              {[
+                {
+                  icon: '🏢',
+                  title: 'Địa chỉ doanh nghiệp',
+                  content: '199 Điện Biên Phủ, P.15, Bình Thạnh, Thành phố Hồ Chí Minh',
+                },
+                {
+                  icon: '📞',
+                  title: 'Thông tin doanh nghiệp',
+                  content: 'Số điện thoại: 0906 76 12 15',
+                  subContent: 'Gmail: info@betraining.org',
+                },
+                {
+                  icon: '⏰',
+                  title: 'Thời Gian Làm Việc',
+                  content: 'Thứ hai - Thứ sáu: 08:00 - 20:00',
+                  subContent: 'Không làm việc các ngày lễ',
+                },
+              ].map(({ icon, title, content, subContent }, index) => (
+                <div key={index} className="contact-card">
+                  <div className="icon">{icon}</div>
+                  <h3>{title}</h3>
+                  <p>{content}</p>
+                  {subContent && <p>{subContent}</p>}
+                </div>
+              ))}
             </div>
-            <div className="col-lg-4" data-aos="fade-up" data-aos-duration="1500">
-              <div className="contact__rightside cmn__bg">
-                <h4 className="mb-30">Feel free to contact me anytime</h4>
-                <div className="contact__item mb-20">
-                  <span className="he1">Email</span>
-                  <a href="#0">davidmatias333@gmail.com</a>
-                </div>
-                <div className="contact__item mb-20">
-                  <span className="he1">Phone</span>
-                  <a href="#0">+(2) 871 382 023</a>
-                </div>
-                <div className="contact__item">
-                  <span className="he1">Address</span>
-                  <span className="address">Victoria Street London</span>
-                </div>
-              </div>
+
+            <div className="register-section">
+              <h2>Đăng ký để được hỗ trợ sớm nhất từ Học Viện Số</h2>
+              <button className="register-btn">Đăng Ký Ngay</button>
             </div>
+          </div>
+          <div className="content-right">
+            <MapSection />
           </div>
         </div>
       </section>
-      <ScrollRestoration />
-    </>
+    </div>
   );
 };
 
-export default Contact;
+export default ContactPage;

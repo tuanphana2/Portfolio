@@ -1,0 +1,82 @@
+.section8 {
+    background: #333; // Màu xám đen chủ đạo
+    color: #fff;
+    padding: 60px 40px;
+    text-align: center;
+    width: 100%;
+
+    h4 {
+        font-size: 32px;
+        font-weight: bold;
+        color: #ffcc00; // Màu vàng nổi bật
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #ffcc00;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+    }
+
+    .row {
+        background: #444;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        margin-bottom: 20px;
+        text-align: left;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        h6 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e74c3c; // Màu đỏ nổi bật
+            margin-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #ddd;
+            line-height: 1.6;
+        }
+    }
+
+    .highlight-text {
+        margin-top: 40px;
+        font-size: 26px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #ffcc00; // Màu vàng nổi bật
+        text-align: center;
+
+        p {
+            margin: 10px 0;
+            font-size: 22px;
+            font-weight: 900;
+            color: #fff; // Trắng để nổi bật
+            background: linear-gradient(90deg, #ffcc00, #ff8800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+    }
+}

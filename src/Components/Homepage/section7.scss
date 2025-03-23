@@ -1,6 +1,6 @@
 .my-story {
     padding: 80px 20px;
-    background: linear-gradient(to bottom, #f5fdfd, #d7f2f2);
+    background: linear-gradient(to bottom, #121212, #1e1e1e); // Nền tối chuyển màu
 
     .container {
         max-width: 1200px;
@@ -33,7 +33,7 @@
             .story-title {
                 font-size: 24px;
                 font-weight: bold;
-                color: #000;
+                color: #fff; // Chữ trắng nổi bật
                 font-family: 'Georgia', serif;
 
                 @media (max-width: 768px) {
@@ -45,7 +45,7 @@
                 font-size: 36px;
                 letter-spacing: 1.5px;
                 font-weight: bold;
-                color: #000;
+                color: #ff7043; // Nhấn mạnh tiêu đề
 
                 @media (max-width: 768px) {
                     font-size: 18px;
@@ -56,7 +56,7 @@
         .story-description {
             p {
                 font-size: 20px;
-                color: #333;
+                color: #bbb; // Màu xám nhẹ dễ đọc
                 margin-bottom: 16px;
 
                 @media (max-width: 768px) {
@@ -68,8 +68,8 @@
         .read-story-btn {
             display: inline-block;
             background: transparent;
-            color: #000;
-            border: 2px solid #f08f8f;
+            color: #ff7043; // Màu cam nổi bật
+            border: 2px solid #ff7043;
             padding: 12px 24px;
             font-size: 14px;
             text-transform: uppercase;
@@ -80,7 +80,7 @@
             width: 100%;
 
             &:hover {
-                background: #f08f8f;
+                background: #ff7043;
                 color: #fff;
             }
 
@@ -97,7 +97,7 @@
             max-height: 350px;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 24px rgba(255, 112, 67, 0.4); // Đổ bóng cam nhẹ
 
             @media (max-width: 768px) {
                 max-height: 250px;

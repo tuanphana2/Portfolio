@@ -1,6 +1,5 @@
 import React from 'react';
 
-import imgBG from '../../assets/img/banner/tachnen.png';
 import TwoButton from '../Shared/Button/TwoButton.jsx';
 
 const FreeTrainingSection = () => {
@@ -21,7 +20,7 @@ const FreeTrainingSection = () => {
               </div>
               <div className="heading">
                 <div className="widget-container">
-                  <h2 className="heading-title">
+                  <h2 className="heading-title-1">
                     CÁCH ĐỂ SỞ HỮU MỘT DOANH NGHIỆP HOẶC SỞ HỮU CHO MÌNH MÔ HÌNH DOANH NGHIỆP CHUYÊN
                     GIA?
                   </h2>
@@ -29,7 +28,7 @@ const FreeTrainingSection = () => {
               </div>
               <div className="sub-heading">
                 <div className="widget-container">
-                  <p className="heading-title">
+                  <p className="heading-title-2">
                     Mà Không Phải Tốn quá nhiều công sức, chịu rủi ro và từ bỏ công việc hiện tại?
                   </p>
                 </div>

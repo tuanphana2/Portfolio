@@ -1,0 +1,60 @@
+.section2 {
+    text-align: center;
+    padding: 50px 20px;
+    background: #1e1e1e; // Nền tối
+
+    h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #fbd46d; // Vàng nhấn mạnh
+        margin-bottom: 30px;
+        position: relative;
+        display: inline-block;
+        padding: 15px 0;
+
+        &:before,
+        &:after {
+            content: "";
+            display: block;
+            width: 500px;
+            height: 3px;
+            background-color: #ff7043; // Màu cam nổi bật
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &:before {
+            top: -20px;
+        }
+
+        &:after {
+            bottom: -20px;
+        }
+    }
+
+    p {
+        font-size: 20px;
+        color: #ddd; // Chữ sáng hơn để dễ đọc
+        max-width: 93%;
+        margin: 20px auto;
+        line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+        padding: 40px 15px;
+
+        h2 {
+            font-size: 26px;
+
+            &:before,
+            &:after {
+                width: 300px; // Giảm độ dài gạch ngang trên mobile
+            }
+        }
+
+        p {
+            font-size: 18px;
+        }
+    }
+}

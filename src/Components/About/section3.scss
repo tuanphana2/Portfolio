@@ -1,0 +1,111 @@
+.section3 {
+    padding: 80px 40px;
+    background: #202020; // Chuyển sang nền tối
+    width: 100%;
+
+    .container {
+        max-width: 1400px;
+        width: 95%;
+        margin: auto;
+    }
+
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 100px;
+    }
+
+    .image-group {
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 480px;
+
+        .main-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1); // Thêm hiệu ứng bóng nhẹ
+        }
+
+        .overlay-img {
+            position: absolute;
+            border-radius: 8px;
+            box-shadow: 2px 4px 10px rgba(255, 255, 255, 0.15);
+        }
+
+        .scuba {
+            width: 150px;
+            top: 12%;
+            right: -12%;
+        }
+
+        .shop {
+            width: 180px;
+            bottom: -22%;
+            left: -12%;
+        }
+
+        .portrait {
+            width: 160px;
+            bottom: -12%;
+            right: -8%;
+        }
+    }
+
+    .text-content {
+        flex: 1;
+        text-align: justify;
+
+        .heading-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fbd46d; // Vàng nhấn mạnh
+        }
+
+        .divider {
+            width: auto;
+            height: 4px;
+            background: linear-gradient(to right, #ff7043, #1e1e1e);
+            margin: 12px 0;
+        }
+
+        .sub-text-1,
+        .sub-text-2 {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ddd; // Màu chữ sáng hơn để dễ đọc
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .content {
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .image-group {
+            max-width: 100%;
+        }
+
+        .text-content {
+            text-align: center;
+            max-width: 90%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 60px 20px;
+
+        .heading-title {
+            font-size: 1.8rem;
+        }
+
+        .sub-text-1,
+        .sub-text-2 {
+            font-size: 1rem;
+        }
+    }
+}

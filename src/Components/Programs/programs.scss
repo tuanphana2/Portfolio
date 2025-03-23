@@ -13,17 +13,39 @@
         display: block;
         width: 100%;
         text-align: center;
-        background: linear-gradient(to right, #ff7e5f, #feb47b);
-        color: white;
-        padding: 40px;
+        background: #000; // Nền đen thuần
+        color: #e0e0e0; // Chữ sáng
+        padding: 50px;
         border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
 
         h1 {
             font-size: 2.5rem;
+            color: #fbd46d; // Màu vàng tạo điểm nhấn
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
         p {
-            color: #fff;
+            color: #b0b0b0; // Màu chữ xám nhẹ
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero {
+            padding: 30px;
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
         }
     }
 
@@ -32,20 +54,22 @@
         max-width: 80%;
         margin-top: 40px;
         padding: 20px;
-        border-left: 5px solid #ff7e5f;
-        background: #f9f9f9;
-        border-radius: 5px;
+        border-left: 5px solid #00c853; // Viền xanh dạ quang
+        background: #121212; // Nền tối
+        border-radius: 8px;
+        box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
 
         .content-left {
             flex: 3;
 
             h2 {
-                color: #333;
+                color: #fbd46d; // Màu vàng nhấn mạnh tiêu đề
             }
 
             p {
                 font-size: 1.1rem;
                 line-height: 1.6;
+                color: #e0e0e0; // Chữ sáng
                 margin-bottom: 10px;
             }
         }
@@ -60,18 +84,33 @@
         .section {
             margin-top: 40px;
             padding: 20px;
-            border-left: 5px solid #ff7e5f;
-            background: #f9f9f9;
-            border-radius: 5px;
+            border-left: 5px solid #00c853; // Viền xanh dạ quang
+            background: #1e1e1e; // Nền tối hơn
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
 
             h2 {
-                color: #333;
+                color: #fbd46d; // Tiêu đề vàng nổi bật
             }
 
             p {
                 font-size: 1.1rem;
                 line-height: 1.6;
+                color: #b0b0b0; // Chữ xám nhạt
                 margin-bottom: 10px;
+            }
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .section-1 {
+            flex-direction: column;
+            padding: 15px;
+
+            .content-right {
+                margin-left: 0;
+                margin-top: 20px;
             }
         }
     }
@@ -79,10 +118,12 @@
     .section-2 {
         text-align: center;
         padding: 50px 20px;
+        background: #121212; // Nền tối hơn
 
         h2 {
             font-size: 30px;
             font-weight: bold;
+            color: #fbd46d; // Tiêu đề vàng nổi bật
             margin-bottom: 30px;
             position: relative;
             display: inline-block;
@@ -94,10 +135,11 @@
                 display: block;
                 width: 500px;
                 height: 3px;
-                background-color: #d19884;
+                background-color: #00c853; // Màu xanh dạ quang
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
+                box-shadow: 0px 2px 10px rgba(0, 200, 83, 0.5);
             }
 
             &:before {
@@ -111,24 +153,47 @@
 
         p {
             font-size: 20px;
-            color: #fff;
-            max-width: 93%;
+            color: #e0e0e0; // Chữ sáng dễ đọc
+            max-width: 94%;
             margin: 20px auto;
             line-height: 1.8;
         }
     }
 
+    /* Responsive */
+    @media (max-width: 768px) {
+        .section-2 {
+            padding: 40px 15px;
+
+            h2 {
+                font-size: 26px;
+
+                &:before,
+                &:after {
+                    width: 300px;
+                }
+            }
+
+            p {
+                font-size: 18px;
+            }
+        }
+    }
+
     .section-3 {
         margin: 20px auto;
+        background: #121212; // Nền tối tổng thể
 
         .reasons-container {
-            background-color: #fff;
+            background-color: #1e1e1e; // Thẻ tối hơn
             padding: 30px;
-            border: 2px solid #000;
+            border: 2px solid #00c853; // Viền xanh neon nổi bật
             max-width: 800px;
             margin: 20px auto;
             justify-content: center;
             justify-items: center;
+            border-radius: 10px; // Bo góc mềm mại
+            box-shadow: 0px 4px 10px rgba(0, 200, 83, 0.2); // Hiệu ứng bóng nhẹ
         }
 
         .reasons-content {
@@ -138,23 +203,53 @@
             .number {
                 font-size: 60px;
                 font-weight: bold;
-                color: #bee6e0;
+                color: #00e676; // Màu xanh neon bắt mắt
                 margin-right: 20px;
             }
 
             .text-content {
                 h2 {
-                    color: #000;
+                    color: #fbd46d; // Tiêu đề vàng nổi bật
                     font-size: 20px;
                     font-weight: bold;
                     text-transform: uppercase;
                 }
 
                 p {
-                    color: #000;
+                    color: #e0e0e0; // Chữ sáng để dễ đọc
                     font-size: 16px;
                     line-height: 1.6;
                     margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .section-3 {
+            .reasons-container {
+                padding: 20px;
+            }
+
+            .reasons-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+                .number {
+                    font-size: 50px;
+                    margin-bottom: 10px;
+                }
+
+                .text-content {
+                    h2 {
+                        font-size: 18px;
+                    }
+
+                    p {
+                        font-size: 14px;
+                    }
                 }
             }
         }
@@ -164,8 +259,8 @@
         margin: 20px auto;
         text-align: center;
         padding: 50px 20px;
-        background: linear-gradient(to bottom, #fff, #fdf3ed);
-        color: #333;
+        background: #121212; // Nền tối tổng thể
+        color: #e0e0e0; // Chữ sáng dễ đọc
 
         .find {
             .container {
@@ -177,6 +272,7 @@
                 font-size: 36px;
                 font-weight: bold;
                 margin-bottom: 15px;
+                color: #fbd46d; // Tiêu đề màu vàng nổi bật
             }
 
             .list {
@@ -188,11 +284,12 @@
 
                 .list-item {
                     margin-bottom: 15px;
+                    color: #e0e0e0; // Chữ màu sáng dễ đọc
                 }
 
                 .subtext {
                     font-style: italic;
-                    color: #777;
+                    color: #888; // Màu chữ phụ nhẹ hơn
                 }
             }
         }
@@ -209,11 +306,11 @@
                 max-width: 800px;
                 text-align: center;
                 padding: 50px 30px;
-                border: 3px solid #c2dcd3;
+                border: 3px solid #00c853; // Viền xanh neon nổi bật
                 border-radius: 10px;
                 position: relative;
-                background: white;
-                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+                background: #1e1e1e; // Thẻ nội dung tối hơn
+                box-shadow: 0px 5px 15px rgba(0, 200, 83, 0.2); // Hiệu ứng bóng nhẹ
             }
 
             .heading {
@@ -221,11 +318,11 @@
                 top: -18px;
                 left: 50%;
                 transform: translateX(-50%);
-                background: white;
+                background: #1e1e1e;
                 padding: 0 20px;
                 font-size: 28px;
                 font-weight: bold;
-                color: #333;
+                color: #fbd46d;
                 display: flex;
                 align-items: center;
             }
@@ -234,11 +331,11 @@
                 background: transparent;
                 font-family: "Brush Script MT", cursive;
                 font-size: 36px;
-                color: #c97a63;
+                color: #fbd46d; // Chữ vàng nghệ thuật
             }
 
             .bold-text {
-                color: #000;
+                color: #e0e0e0;
                 font-size: 22px;
                 margin-top: 10px;
             }
@@ -246,8 +343,35 @@
             .description {
                 font-size: 18px;
                 line-height: 1.6;
-                color: #444;
+                color: #b0b0b0; // Chữ sáng nhẹ hơn để dễ đọc
                 margin-top: 15px;
+            }
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .section-4 {
+            .in-short {
+                .container {
+                    padding: 30px;
+                }
+
+                .heading {
+                    font-size: 22px;
+                }
+
+                .script-text {
+                    font-size: 28px;
+                }
+
+                .bold-text {
+                    font-size: 18px;
+                }
+
+                .description {
+                    font-size: 16px;
+                }
             }
         }
     }
@@ -255,52 +379,52 @@
     .section-5 {
         margin: 20px auto;
         padding: 60px 15px;
-        background-color: #000;
-    
+        background-color: #121212; // Nền tối mềm mại hơn
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
-    
+
         .section-header {
             margin-bottom: 30px;
             justify-items: center;
             word-spacing: 2px;
-    
+
             .title {
                 font-size: 36px;
                 font-weight: bold;
                 margin-bottom: 10px;
-                color: #fff;
+                color: #fbd46d; // Tiêu đề vàng nổi bật
             }
-    
+
             .subtitle {
                 font-size: 18px;
                 font-weight: 300;
-                color: #fff;
+                color: #e0e0e0; // Chữ phụ sáng hơn để dễ đọc
             }
         }
-    
+
         .video-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-    
+
             @media (max-width: 768px) {
                 grid-template-columns: 1fr;
             }
         }
-    
+
         .video-item {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background-color: #000;
-    
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); // Bóng sáng nhẹ
+            background-color: #1e1e1e; // Màu nền sáng hơn nền chính để tạo contrast
+
             iframe {
                 position: absolute;
                 top: 0;
@@ -308,15 +432,15 @@
                 width: 100%;
                 height: 100%;
             }
-    
+
             .video-title {
                 margin-top: 8px;
                 font-size: 14px;
                 font-weight: 500;
-                color: #444;
+                color: #ccc; // Chữ sáng nhưng không quá chói
             }
         }
-    
+
         @media (max-width: 768px) {
             .section-header {
                 .title {

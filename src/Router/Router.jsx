@@ -4,6 +4,7 @@ import About from '../Components/About/About';
 import Root from '../Layouts/Root';
 import AllBlogs from '../Pages/AllBlogs/AllBlogs';
 import BlogDetails from '../Pages/BlogDetails/BlogDetails';
+import Careers from '../Pages/Careers';
 import Contact from '../Pages/Contact/Contact';
 import Home from '../Pages/Home';
 import Podcast from '../Pages/Podcast/Podcast';
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact />,
+      },
+      {
+        path: '/careers',
+        element: <Careers />,
       },
     ],
   },
