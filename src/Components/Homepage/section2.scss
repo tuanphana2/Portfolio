@@ -1,6 +1,6 @@
 .imagination-story {
     padding: 100px 0;
-    background-color: #121212; // Màu nền tối hơn
+    background-color: #000; // Màu nền tối hơn
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
         .main-title {
             font-size: 36px;
             font-weight: bold;
-            color: #fbd46d; // Màu vàng nổi bật
+            color: #C9F31D; // High-light màu
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -34,17 +34,17 @@
     }
 
     .content-box {
-        background-color: #1e1e1e; // Màu nền tối hơn
+        background-color: #1a1a1a; // Màu nền tối hơn
         color: #fff; // Chữ trắng để dễ đọc
         padding: 40px;
         border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); // Bóng đổ nhẹ hơn để phù hợp với nền tối
+        box-shadow: 0 8px 24px rgba(201, 243, 29, 0.2); // Bóng đổ màu high-light
 
         .title {
             font-size: 28px;
             font-weight: bold;
             margin-bottom: 20px;
-            color: #fbd46d; // Giữ màu vàng nổi bật
+            color: #C9F31D; // High-light màu
             text-transform: uppercase;
             text-align: center;
         }
@@ -62,7 +62,7 @@
                 left: 0;
                 top: 3px;
                 font-size: 18px;
-                color: #fbd46d; // Giữ màu vàng để tạo điểm nhấn
+                color: #C9F31D; // High-light màu
                 font-weight: bold;
             }
 

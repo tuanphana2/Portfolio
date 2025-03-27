@@ -1,6 +1,8 @@
 import React from 'react';
 
 import './about.scss';
+import { ScrollRestoration } from 'react-router-dom';
+
 import Section1 from './Section1';
 import Section2 from './Section2';
 import Section3 from './Section3';
@@ -10,6 +12,7 @@ import Section6 from './Section6';
 import Section7 from './Section7';
 import Section8 from './Section8';
 import Section9 from './Section9';
+
 
 const About = () => {
   return (
@@ -28,6 +31,7 @@ const About = () => {
       <Section7 />
       <Section8 />
       <Section9 />
+      <ScrollRestoration />
     </div>
   );
 };

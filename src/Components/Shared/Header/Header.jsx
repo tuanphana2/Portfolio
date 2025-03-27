@@ -52,13 +52,6 @@ const menuList = [
     id: 6,
     path: '/all-blog',
     name: 'BÀI VIẾT',
-    dropDown: [
-      {
-        id: 1,
-        path: '/blog-details',
-        name: 'BÀI VIẾT CHI TIẾT',
-      },
-    ],
   },
   {
     id: 7,

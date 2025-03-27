@@ -4,6 +4,8 @@
   background-position: center;
   background-repeat: no-repeat;
   padding: 60px 0;
+  background-color: #121212; // Nền tối
+  color: #000; // Màu chữ trắng
 
   &__content {
     justify-items: center;
@@ -14,7 +16,7 @@
       .section-title {
         font-size: 2rem;
         font-weight: bold;
-        color: #000;
+        color: #000; // High-light màu
       }
     }
 
@@ -28,7 +30,7 @@
       line-height: 30px;
       margin-top: -10px;
       margin-bottom: 10px;
-      color: #000;
+      color: #000; // Màu chữ xám nhạt
     }
   }
 
@@ -43,7 +45,7 @@
       margin-bottom: 12px;
       line-height: 1.6;
       font-size: 18px;
-      color: #000;
+      color: #000; // Màu chữ trắng
 
       &::before {
         content: '✔';
@@ -51,12 +53,12 @@
         left: 0;
         top: 2px;
         font-size: 1rem;
-        color: #ff0000;
+        color: #f00; // High-light màu
         font-weight: bold;
       }
 
       b {
-        color: #ff0000;
+        color: #f00; // High-light màu
       }
 
       i {

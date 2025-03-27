@@ -1,8 +1,7 @@
 import AOS from "aos";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 
-import RegistrationForm from "./Components/Register/Register";
 import { router } from "./Router/Router.jsx";
 
 import "aos/dist/aos.css";

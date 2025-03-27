@@ -1,52 +1,46 @@
-import React from 'react';
-import { ScrollRestoration, Link } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './allBlogs.scss';
 
-import BlogCard from '../../Components/Blogs/BlogCard/BlogCard';
-import BlogSidebar from '../../Components/Blogs/BlogSidebar';
-import PageHeader from '../../Components/Shared/PageHeader/PageHeader';
-import { blogsList } from '../../Utlits/blogList';
+export default function PostList() {
+  const [posts, setPosts] = useState([]);
 
-const AllBlogs = () => {
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/posts');
+        setPosts(response.data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+    fetchPosts();
+  }, []);
+
   return (
-    <>
-      <PageHeader heading={'Blog Standard'} page={'Blog Standard'} />
-      <section className="blog__bsection pb-120">
+    <div className="post-list">
+      <section className="behind-header"></section>
+      <section className="all-blogs">
         <div className="container">
-          <div className="row g-4">
-            <div className="col-lg-8">
-              <div className="blog__bleft__wrapper">
-                {blogsList.map(({ id, heading, image, para, date }) => (
-                  <BlogCard key={id} date={date} heading={heading} image={image} para={para} />
-                ))}
-                <div className="pagination__box cmn__bg">
-                  <ul className="pagi">
-                    <li>
-                      <Link>1</Link>
-                    </li>
-                    <li>
-                      <Link>2</Link>
-                    </li>
-                    <li>
-                      <Link>3</Link>
-                    </li>
-                    <li>
-                      <Link>
-                        <i className="bi bi-chevron-right"></i>
-                      </Link>
-                    </li>
-                  </ul>
+          <h1>Tất cả bài viết</h1>
+          <div className="posts">
+            {posts.map((post) => (
+              <Link
+                to={`/blog-details/${post._id}`}
+                key={post.id}
+                className="post-item"
+                state={{ postId: post.id }}
+              >
+                <div className="post-image-wrapper">
+                  <img src={post.image} alt={post.title} className="post-image" />
+                  <div className="post-title">{post.title}</div>
                 </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <BlogSidebar />
-            </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
-      <ScrollRestoration />
-    </>
+    </div>
   );
-};
-
-export default AllBlogs;
+}
