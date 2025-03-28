@@ -6,17 +6,19 @@ import './allBlogs.scss';
 export default function PostList() {
   const [posts, setPosts] = useState([]);
 
+  const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/posts');
+        const response = await axios.get(`${API_URL}/posts`);
         setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
     };
     fetchPosts();
-  }, []);
+  }, [API_URL]);
 
   return (
     <div className="post-list">

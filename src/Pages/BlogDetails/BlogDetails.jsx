@@ -6,18 +6,19 @@ import './blogDetails.scss';
 export default function PostDetail() {
   const { id } = useParams();
   const [post, setPost] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/posts/${id}`);
+        const response = await axios.get(`${API_URL}/posts/${id}`);
         setPost(response.data);
       } catch (error) {
         console.error('Error fetching post:', error);
       }
     };
     fetchPost();
-  }, [id]);
+  }, [API_URL, id]);
 
   if (!post) return <p>Đang tải bài viết...</p>;
 

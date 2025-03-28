@@ -11,6 +11,7 @@ export default function EditBlog() {
   const [image, setImage] = useState('');
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
 
   useEffect(() => {
     fetchPost();
@@ -18,7 +19,7 @@ export default function EditBlog() {
 
   const fetchPost = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/posts/${id}`);
+      const response = await axios.get(`${API_URL}/posts/${id}`);
       setTitle(response.data.title);
       setImage(response.data.image);
       setContent(response.data.content);
@@ -38,7 +39,7 @@ export default function EditBlog() {
 
     try {
       await axios.put(
-        `http://localhost:5000/posts/${id}`,
+        `${API_URL}/posts/${id}`,
         { title, image, content },
         { headers: { Authorization: `Bearer ${token}` } }
       );

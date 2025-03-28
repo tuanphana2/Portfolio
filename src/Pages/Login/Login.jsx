@@ -8,6 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
 
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ export default function Login() {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post("http://localhost:5000/auth/login", { username, password });
+      const res = await axios.post(`${API_URL}/auth/login`, { username, password });
 
       // Lưu token vào localStorage
       localStorage.setItem("token", res.data.token);

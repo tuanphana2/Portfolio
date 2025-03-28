@@ -10,6 +10,7 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10; // Số bài viết trên mỗi trang
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
 
   useEffect(() => {
     fetchPosts();
@@ -17,7 +18,7 @@ export default function Dashboard() {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/posts");
+      const response = await axios.get(`${API_URL}/posts`);
       setPosts(response.data);
     } catch (error) {
       console.error("Lỗi khi tải bài viết:", error);
@@ -30,7 +31,7 @@ export default function Dashboard() {
     if (!window.confirm("Bạn có chắc chắn muốn xóa bài viết này?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/posts/${id}`);
+      await axios.delete(`${API_URL}/posts/${id}`);
       setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
       alert("Xóa bài viết thành công!");
       fetchPosts();
