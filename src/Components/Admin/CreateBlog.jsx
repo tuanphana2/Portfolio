@@ -7,6 +7,7 @@ export default function CreateBlog() {
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
   const [content, setContent] = useState('');
+  const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
 
   const savePost = async () => {
     const token = localStorage.getItem('token');
@@ -17,7 +18,7 @@ export default function CreateBlog() {
 
     try {
       await axios.post(
-        'http://localhost:5000/posts',
+        `${API_URL}/posts`,
         { title, image, content },
         { headers: { Authorization: `Bearer ${token}` } }
       );
