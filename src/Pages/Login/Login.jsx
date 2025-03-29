@@ -1,30 +1,30 @@
-import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./login.scss";
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './login.scss';
 
 export default function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
+  const [error, setError] = useState('');
+  const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
 
   const navigate = useNavigate();
 
   const login = async () => {
     setLoading(true);
-    setError("");
+    setError('');
     try {
       const res = await axios.post(`${API_URL}/auth/login`, { username, password });
 
       // Lưu token vào localStorage
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem('token', res.data.token);
 
       // Chuyển hướng đến trang chính sau khi đăng nhập
-      navigate("/admin/dashboard");
+      navigate('/admin/dashboard');
     } catch (error) {
-      setError(error.response?.data?.message || "Đăng nhập thất bại, vui lòng thử lại!");
+      setError(error.response?.data?.message || 'Đăng nhập thất bại, vui lòng thử lại!');
     } finally {
       setLoading(false);
     }
@@ -50,7 +50,7 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button onClick={login} disabled={loading}>
-            {loading ? "Đang đăng nhập..." : "Đăng nhập"}
+            {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
           </button>
         </div>
       </section>
