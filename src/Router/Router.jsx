@@ -83,7 +83,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'dashboard',
-        element: <ProtectedRoute element={<Dashboard />} />,
+        element: <ProtectedRoute element={<ManageBlogs />} />,
       },
       {
         path: 'manageBlogs',
