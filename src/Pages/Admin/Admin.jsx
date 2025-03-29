@@ -52,7 +52,9 @@ const Admin = () => {
             </nav>
           </aside>
         )}
-        <Outlet />
+        <div className="admin-main">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
