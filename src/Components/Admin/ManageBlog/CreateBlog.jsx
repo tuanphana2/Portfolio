@@ -36,17 +36,27 @@ export default function CreateBlog() {
   const openCloudinaryWidget = () => {
     window.cloudinary.openMediaLibrary(
       {
-        cloud_name: 'dyrr4nn92', // Thay bằng Cloud Name của bạn
-        api_key: '467944596384757', // Thay bằng API Key của bạn
+        cloud_name: 'dyrr4nn92',
+        api_key: '467944596384757',
         multiple: false,
         max_files: 1,
-        insert_caption: 'Chọn ảnh', // Hiển thị chú thích
-        default_transformations: [],
       },
       (error, result) => {
         if (!error && result.event === 'success' && result.assets.length > 0) {
-          const selectedImage = result.assets[0].secure_url;
-          setImage(selectedImage); // Cập nhật ảnh vào state
+          const selectedImage = result.assets[0].secure_url || result.assets[0].url;
+          setImage(selectedImage); // Hiển thị ảnh lên banner
+
+          // Chèn ảnh vào TinyMCE nếu đang sử dụng
+          if (selectedImage && window.tinymce) {
+            const editor = window.tinymce.activeEditor;
+            if (editor) {
+              editor.execCommand(
+                'mceInsertContent',
+                false,
+                `<img src="${selectedImage}" alt="Ảnh từ Cloudinary"/>`
+              );
+            }
+          }
         } else if (error) {
           console.error('Lỗi khi chọn ảnh từ Cloudinary:', error);
         }
