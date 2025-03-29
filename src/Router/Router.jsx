@@ -91,11 +91,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: 'create',
-            element: <ProtectedRoute element={<CreateBlog />} />,
+            element: <CreateBlog />,
           },
           {
             path: 'edit/:id',
-            element: <ProtectedRoute element={<EditBlog />} />,
+            element: <EditBlog />,
           },
         ],
       },

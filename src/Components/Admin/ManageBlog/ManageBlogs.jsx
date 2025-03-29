@@ -54,7 +54,7 @@ export default function Dashboard() {
 
       {/* Nút Thêm bài viết */}
       <div className="table-header">
-        <button className="add-btn" onClick={() => navigate("/admin/create")}>
+        <button className="add-btn" onClick={() => navigate("/admin/manageBlogs/create")}>
           <FaPlus /> Thêm bài viết
         </button>
       </div>
@@ -80,7 +80,7 @@ export default function Dashboard() {
                       <img src={post.image} alt={post.title} />
                     </td>
                     <td>
-                      <button className="edit-btn" onClick={() => navigate(`/admin/edit/${post._id}`)}>
+                      <button className="edit-btn" onClick={() => navigate(`/admin/manageBlogs/edit/${post._id}`)}>
                         <FaEdit />
                       </button>
                       <button className="delete-btn" onClick={() => deletePost(post._id)}>
