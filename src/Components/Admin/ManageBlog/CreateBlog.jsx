@@ -9,6 +9,9 @@ export default function CreateBlog() {
   const [content, setContent] = useState('');
   const [uploading, setUploading] = useState(false);
   const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
+  // Fix lỗi non-passive event listener
+  document.addEventListener('touchstart', function () {}, { passive: true });
+  document.addEventListener('touchmove', function () {}, { passive: true });
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -34,26 +37,25 @@ export default function CreateBlog() {
   };
 
   const openCloudinaryWidget = () => {
-    window.cloudinary.openMediaLibrary(
+    const widget = window.cloudinary.createUploadWidget(
       {
         cloud_name: 'dyrr4nn92',
-        api_key: '467944596384757',
+        upload_preset: 'NTD-Portfolio', // Đảm bảo là UNSIGNED
+        sources: ['local', 'url', 'google_drive', 'facebook'],
         multiple: false,
-        max_files: 1,
+        folder: 'samples/ecommerce',
       },
       (error, result) => {
-        console.log("Cloudinary result:", result); // Kiểm tra dữ liệu trả về
-  
-        if (!error && result.event === 'success' && result.assets.length > 0) {
-          const selectedImage = result.assets[0].secure_url || result.assets[0].url; 
-          console.log("Selected Image URL:", selectedImage); // Debug URL
-          setImage(selectedImage);
+        if (!error && result.event === 'success') {
+          console.log('Upload thành công:', result.info);
+          setImage(result.info.secure_url);
         } else if (error) {
-          console.error("Lỗi khi chọn ảnh từ Cloudinary:", error);
+          console.error('Lỗi khi tải ảnh lên Cloudinary:', error);
         }
       }
     );
-  };  
+    widget.open(); // Mở Widget
+  };
 
   const savePost = async () => {
     const token = localStorage.getItem('token');
