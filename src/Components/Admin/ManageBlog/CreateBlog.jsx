@@ -42,27 +42,18 @@ export default function CreateBlog() {
         max_files: 1,
       },
       (error, result) => {
+        console.log("Cloudinary result:", result); // Kiểm tra dữ liệu trả về
+  
         if (!error && result.event === 'success' && result.assets.length > 0) {
-          const selectedImage = result.assets[0].secure_url || result.assets[0].url;
-          setImage(selectedImage); // Hiển thị ảnh lên banner
-
-          // Chèn ảnh vào TinyMCE nếu đang sử dụng
-          if (selectedImage && window.tinymce) {
-            const editor = window.tinymce.activeEditor;
-            if (editor) {
-              editor.execCommand(
-                'mceInsertContent',
-                false,
-                `<img src="${selectedImage}" alt="Ảnh từ Cloudinary"/>`
-              );
-            }
-          }
+          const selectedImage = result.assets[0].secure_url || result.assets[0].url; 
+          console.log("Selected Image URL:", selectedImage); // Debug URL
+          setImage(selectedImage);
         } else if (error) {
-          console.error('Lỗi khi chọn ảnh từ Cloudinary:', error);
+          console.error("Lỗi khi chọn ảnh từ Cloudinary:", error);
         }
       }
     );
-  };
+  };  
 
   const savePost = async () => {
     const token = localStorage.getItem('token');
