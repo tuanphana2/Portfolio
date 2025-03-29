@@ -94,6 +94,13 @@ export default function CreateBlog() {
         {image && (
           <div className="image-preview">
             <img src={image} alt="Ảnh đã chọn" className="preview-image" />
+            <input
+              type="text"
+              value={image}
+              readOnly
+              className="image-url-input"
+              onClick={(e) => e.target.select()} // Cho phép chọn nhanh URL
+            />
           </div>
         )}
 
