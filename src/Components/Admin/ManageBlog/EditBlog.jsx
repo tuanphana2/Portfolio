@@ -124,16 +124,28 @@ export default function EditBlog() {
                     headers: { 'Content-Type': 'multipart/form-data' },
                   });
 
-                  console.log('Response from server:', data); // Xem dữ liệu trả về
+                  console.log('Response from server:', data); // Kiểm tra phản hồi từ server
 
                   if (data && data.url) {
-                    success(data.url);
+                    if (typeof success === 'function') {
+                      success(data.url);
+                    } else {
+                      console.error('success is not a function');
+                    }
                   } else {
-                    failure('Không nhận được đường dẫn ảnh!');
+                    if (typeof failure === 'function') {
+                      failure('Không nhận được đường dẫn ảnh!');
+                    } else {
+                      console.error('failure is not a function');
+                    }
                   }
                 } catch (error) {
                   console.error('Lỗi upload ảnh:', error);
-                  failure('Không thể tải ảnh lên!');
+                  if (typeof failure === 'function') {
+                    failure('Không thể tải ảnh lên!');
+                  } else {
+                    console.error('failure is not a function');
+                  }
                 }
               },
             }}
