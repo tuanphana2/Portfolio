@@ -14,28 +14,20 @@ export default function CreateBlog() {
     const file = e.target.files[0];
     if (!file) return;
 
-    if (!file.type.startsWith('image/')) {
-      alert('Chỉ được phép tải lên hình ảnh!');
-      return;
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Kích thước ảnh không được vượt quá 5MB!');
-      return;
-    }
-
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append('file', file);
+    formData.append('upload_preset', 'NTD-Portfolio'); // Đã đổi sang Unsigned
 
     setUploading(true);
     try {
-      const response = await axios.post(`${API_URL}/api/upload`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-
-      setImage(response.data.url);
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/dyrr4nn92/image/upload',
+        formData
+      );
+      setImage(response.data.secure_url);
     } catch (error) {
-      console.error('Lỗi tải ảnh:', error.response?.data || error.message);
-      alert('Lỗi khi tải ảnh lên!');
+      console.error('Lỗi upload ảnh:', error);
+      alert('Không thể tải ảnh lên Cloudinary!');
     } finally {
       setUploading(false);
     }
@@ -111,18 +103,21 @@ export default function CreateBlog() {
 
             images_upload_handler: async (blobInfo, success, failure) => {
               setUploading(true);
+
               const formData = new FormData();
-              formData.append('image', blobInfo.blob(), blobInfo.filename());
+              formData.append('file', blobInfo.blob());
+              formData.append('upload_preset', 'your-upload-preset'); // Thay bằng upload_preset từ Cloudinary
 
               try {
-                const { data } = await axios.post(`${API_URL}/api/upload`, formData, {
-                  headers: { 'Content-Type': 'multipart/form-data' },
-                });
+                const { data } = await axios.post(
+                  'https://api.cloudinary.com/v1_1/dyrr4nn92/image/upload',
+                  formData
+                );
 
-                if (data.url) {
-                  success(data.url);
+                if (data.secure_url) {
+                  success(data.secure_url);
                 } else {
-                  failure('Không thể tải ảnh lên!');
+                  failure('Không thể tải ảnh lên Cloudinary!');
                 }
               } catch (error) {
                 console.error('Lỗi upload ảnh:', error);
