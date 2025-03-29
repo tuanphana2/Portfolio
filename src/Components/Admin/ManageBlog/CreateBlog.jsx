@@ -41,6 +41,22 @@ export default function CreateBlog() {
     }
   };
 
+  const openCloudinaryWidget = () => {
+    window.cloudinary.openMediaLibrary(
+      {
+        cloud_name: 'your-cloud-name',
+        api_key: 'your-api-key',
+        multiple: false,
+        max_files: 1,
+      },
+      (error, result) => {
+        if (!error && result.event === 'success') {
+          setImage(result.info.secure_url);
+        }
+      }
+    );
+  };
+
   const savePost = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -75,6 +91,7 @@ export default function CreateBlog() {
         />
 
         <input type="file" accept="image/*" onChange={handleFileChange} />
+        <button onClick={openCloudinaryWidget}>Chọn ảnh từ Cloudinary</button>
         {uploading && <p>Đang tải ảnh lên...</p>}
         {image && <img src={image} alt="Banner bài viết" className="preview-image" />}
 
