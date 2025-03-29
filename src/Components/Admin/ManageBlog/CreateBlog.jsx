@@ -36,16 +36,19 @@ export default function CreateBlog() {
   const openCloudinaryWidget = () => {
     window.cloudinary.openMediaLibrary(
       {
-        cloud_name: 'dyrr4nn92',
-        api_key: '467944596384757',
+        cloud_name: 'dyrr4nn92', // Thay bằng Cloud Name của bạn
+        api_key: '467944596384757', // Thay bằng API Key của bạn
         multiple: false,
         max_files: 1,
+        insert_caption: 'Chọn ảnh', // Hiển thị chú thích
+        default_transformations: [],
       },
       (error, result) => {
         if (!error && result.event === 'success' && result.assets.length > 0) {
-          setImage(result.assets[0].secure_url);
-        } else {
-          console.error('Lỗi hoặc không có ảnh nào được chọn:', error);
+          const selectedImage = result.assets[0].secure_url;
+          setImage(selectedImage); // Cập nhật ảnh vào state
+        } else if (error) {
+          console.error('Lỗi khi chọn ảnh từ Cloudinary:', error);
         }
       }
     );
@@ -87,7 +90,11 @@ export default function CreateBlog() {
         <input type="file" accept="image/*" onChange={handleFileChange} />
         <button onClick={openCloudinaryWidget}>Chọn ảnh từ Cloudinary</button>
         {uploading && <p>Đang tải ảnh lên...</p>}
-        {image && <img src={image} alt="Banner bài viết" className="preview-image" />}
+        {image && (
+          <div className="image-preview">
+            <img src={image} alt="Ảnh đã chọn" className="preview-image" />
+          </div>
+        )}
 
         <Editor
           apiKey="ur8ckyxvov6axv3grwbct3wtps7nv93ah15d2hiwosxnu2ea"
