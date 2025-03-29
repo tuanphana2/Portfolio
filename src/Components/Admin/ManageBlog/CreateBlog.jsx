@@ -50,8 +50,10 @@ export default function CreateBlog() {
         max_files: 1,
       },
       (error, result) => {
-        if (!error && result.event === 'success') {
-          setImage(result.info.secure_url);
+        if (!error && result.event === 'success' && result.assets.length > 0) {
+          setImage(result.assets[0].secure_url);
+        } else {
+          console.error('Lỗi hoặc không có ảnh nào được chọn:', error);
         }
       }
     );
