@@ -44,29 +44,28 @@ export default function EditBlog() {
       alert('Kích thước ảnh không được vượt quá 5MB!');
       return;
     }
-    setTempImage(URL.createObjectURL(file));
-    uploadImage(file);
+    setTempImage(URL.createObjectURL(file)); // Hiển thị ảnh tạm thời
+    uploadImage(file); // Gọi hàm upload
   };
 
   const uploadImage = async (file) => {
     const formData = new FormData();
-    formData.append('image', file); // Key phải là "image"
+    formData.append('image', file);
+
+    setUploading(true);
 
     try {
       const { data } = await axios.post(`${API_URL}/api/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      console.log('Response from server:', data);
-
-      if (data.url) {
-        setImage(data.url); // Cập nhật ảnh hiển thị
-      } else {
-        alert('Không nhận được URL hợp lệ!');
-      }
+      setImage(data.url); // Cập nhật ảnh sau khi upload thành công
+      setContent((prevContent) => prevContent + `<img src="${data.url}" alt="Hình ảnh" />`);
     } catch (error) {
       console.error('Lỗi tải ảnh:', error);
       alert('Không thể tải ảnh lên!');
+    } finally {
+      setUploading(false);
     }
   };
 
