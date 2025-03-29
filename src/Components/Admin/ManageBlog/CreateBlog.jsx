@@ -44,8 +44,8 @@ export default function CreateBlog() {
   const openCloudinaryWidget = () => {
     window.cloudinary.openMediaLibrary(
       {
-        cloud_name: 'your-cloud-name',
-        api_key: 'your-api-key',
+        cloud_name: 'dyrr4nn92',
+        api_key: '467944596384757',
         multiple: false,
         max_files: 1,
       },
