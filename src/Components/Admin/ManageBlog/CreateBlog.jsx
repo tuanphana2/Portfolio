@@ -1,6 +1,6 @@
 import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './createBlog.scss';
 
 export default function CreateBlog() {
@@ -8,24 +8,54 @@ export default function CreateBlog() {
   const [image, setImage] = useState('');
   const [content, setContent] = useState('');
   const [uploading, setUploading] = useState(false);
-  const [existingImages, setExistingImages] = useState([]); // Danh sách ảnh có sẵn
-
   const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
+  // Fix lỗi non-passive event listener
+  document.addEventListener('touchstart', function () {}, { passive: true });
+  document.addEventListener('touchmove', function () {}, { passive: true });
 
-  // 📌 Lấy danh sách ảnh từ Cloudinary
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const { data } = await axios.get(
-          `https://res.cloudinary.com/dyrr4nn92/image/list/samples.json`
-        );
-        setExistingImages(data.resources.map((img) => img.secure_url));
-      } catch (error) {
-        console.error('Lỗi khi lấy danh sách ảnh từ Cloudinary:', error);
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'NTD-Portfolio');
+
+    setUploading(true);
+    try {
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/dyrr4nn92/image/upload',
+        formData
+      );
+      setImage(response.data.secure_url);
+    } catch (error) {
+      console.error('Lỗi upload ảnh:', error);
+      alert('Không thể tải ảnh lên Cloudinary!');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const openCloudinaryWidget = () => {
+    const widget = window.cloudinary.createUploadWidget(
+      {
+        cloud_name: 'dyrr4nn92',
+        upload_preset: 'NTD-Portfolio', // Đảm bảo là UNSIGNED
+        sources: ['local', 'url', 'google_drive', 'facebook'],
+        multiple: false,
+        folder: 'samples/ecommerce',
+      },
+      (error, result) => {
+        if (!error && result.event === 'success') {
+          console.log('Upload thành công:', result.info);
+          setImage(result.info.secure_url);
+        } else if (error) {
+          console.error('Lỗi khi tải ảnh lên Cloudinary:', error);
+        }
       }
-    };
-    fetchImages();
-  }, []);
+    );
+    widget.open(); // Mở Widget
+  };
 
   const savePost = async () => {
     const token = localStorage.getItem('token');
@@ -60,24 +90,11 @@ export default function CreateBlog() {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <div className="image-gallery">
-          <h3>Chọn ảnh từ Cloudinary:</h3>
-          <div className="gallery-grid">
-            {existingImages.map((imgUrl, index) => (
-              <button
-                key={index}
-                className={`image-button ${image === imgUrl ? 'selected' : ''}`}
-                onClick={() => setImage(imgUrl)}
-              >
-                <img src={imgUrl} alt="Ảnh từ Cloudinary" />
-              </button>
-            ))}
-          </div>
-        </div>
-
+        <input type="file" accept="image/*" onChange={handleFileChange} />
+        <button onClick={openCloudinaryWidget}>Chọn ảnh từ Cloudinary</button>
+        {uploading && <p>Đang tải ảnh lên...</p>}
         {image && (
           <div className="image-preview">
-            <h3>Ảnh đã chọn:</h3>
             <img src={image} alt="Ảnh đã chọn" className="preview-image" />
           </div>
         )}
@@ -93,6 +110,32 @@ export default function CreateBlog() {
             toolbar:
               'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code',
             content_style: 'body { font-size: 14px; font-family: Arial, sans-serif; }',
+
+            images_upload_handler: async (blobInfo, success, failure) => {
+              setUploading(true);
+
+              const formData = new FormData();
+              formData.append('file', blobInfo.blob());
+              formData.append('upload_preset', 'NTD-Portfolio'); // Thay bằng upload_preset từ Cloudinary
+
+              try {
+                const { data } = await axios.post(
+                  'https://api.cloudinary.com/v1_1/dyrr4nn92/image/upload',
+                  formData
+                );
+
+                if (data.secure_url) {
+                  success(data.secure_url);
+                } else {
+                  failure('Không thể tải ảnh lên Cloudinary!');
+                }
+              } catch (error) {
+                console.error('Lỗi upload ảnh:', error);
+                failure('Không thể tải ảnh lên!');
+              } finally {
+                setUploading(false);
+              }
+            },
           }}
         />
         <button className="btn-post" onClick={savePost} disabled={uploading}>
