@@ -9,9 +9,6 @@ export default function CreateBlog() {
   const [content, setContent] = useState('');
   const [uploading, setUploading] = useState(false);
   const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
-  // Fix lỗi non-passive event listener
-  document.addEventListener('touchstart', function () {}, { passive: true });
-  document.addEventListener('touchmove', function () {}, { passive: true });
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
@@ -19,7 +16,7 @@ export default function CreateBlog() {
 
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'NTD-Portfolio');
+    formData.append('upload_preset', 'NTD-Portfolio'); // Đã đổi sang Unsigned
 
     setUploading(true);
     try {
@@ -37,24 +34,25 @@ export default function CreateBlog() {
   };
 
   const openCloudinaryWidget = () => {
-    const widget = window.cloudinary.createUploadWidget(
+    window.cloudinary.openMediaLibrary(
       {
         cloud_name: 'dyrr4nn92',
-        upload_preset: 'NTD-Portfolio', // Đảm bảo là UNSIGNED
-        sources: ['local', 'url', 'google_drive', 'facebook'],
+        api_key: '467944596384757',
         multiple: false,
-        folder: 'samples/ecommerce',
+        max_files: 1,
       },
       (error, result) => {
-        if (!error && result.event === 'success') {
-          console.log('Upload thành công:', result.info);
-          setImage(result.info.secure_url);
+        console.log('Cloudinary result:', result); // Kiểm tra dữ liệu trả về
+
+        if (!error && result.event === 'success' && result.assets.length > 0) {
+          const selectedImage = result.assets[0].secure_url || result.assets[0].url;
+          console.log('Selected Image URL:', selectedImage); // Debug URL
+          setImage(selectedImage);
         } else if (error) {
-          console.error('Lỗi khi tải ảnh lên Cloudinary:', error);
+          console.error('Lỗi khi chọn ảnh từ Cloudinary:', error);
         }
       }
     );
-    widget.open(); // Mở Widget
   };
 
   const savePost = async () => {
@@ -116,7 +114,7 @@ export default function CreateBlog() {
 
               const formData = new FormData();
               formData.append('file', blobInfo.blob());
-              formData.append('upload_preset', 'NTD-Portfolio'); // Thay bằng upload_preset từ Cloudinary
+              formData.append('upload_preset', 'your-upload-preset'); // Thay bằng upload_preset từ Cloudinary
 
               try {
                 const { data } = await axios.post(
