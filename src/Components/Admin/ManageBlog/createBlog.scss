@@ -23,13 +23,14 @@
 
     input {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-bottom: 15px;
       border: 1px solid #555;
       border-radius: 5px;
       font-size: 16px;
       background: #2a2a2a;
       color: #fff;
+      transition: border-color 0.3s ease;
 
       &:focus {
         border-color: #C9F31D; // Highlight khi focus
@@ -75,11 +76,16 @@
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 
       &:hover {
         background: #a7d318;
         color: #000;
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
       }
     }
   }

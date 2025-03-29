@@ -7,7 +7,29 @@ export default function CreateBlog() {
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
   const [content, setContent] = useState('');
+  const [file, setFile] = useState(null);
   const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const uploadImage = async () => {
+    if (!file) return alert('Vui lòng chọn một tệp hình ảnh');
+    
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await axios.post(`${API_URL}/api/upload`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      setImage(`${API_URL}/uploads/${response.data.file}`);
+      alert('Ảnh đã được tải lên thành công!');
+    } catch (error) {
+      alert('Lỗi khi tải ảnh!');
+    }
+  };
 
   const savePost = async () => {
     const token = localStorage.getItem('token');
@@ -46,7 +68,10 @@ export default function CreateBlog() {
           placeholder="URL ảnh"
           value={image}
           onChange={(e) => setImage(e.target.value)}
+          readOnly
         />
+        <input type="file" accept="image/*" onChange={handleFileChange} />
+        <button onClick={uploadImage}>Tải ảnh lên</button>
         <Editor
           apiKey="ur8ckyxvov6axv3grwbct3wtps7nv93ah15d2hiwosxnu2ea"
           value={content}

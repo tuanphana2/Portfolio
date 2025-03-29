@@ -11,6 +11,7 @@ export default function EditBlog() {
   const [image, setImage] = useState('');
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
   const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
 
   useEffect(() => {
@@ -27,6 +28,26 @@ export default function EditBlog() {
       alert('Lỗi khi tải bài viết!');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const uploadImage = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('image', file);
+    setUploading(true);
+
+    try {
+      const response = await axios.post(`${API_URL}/api/upload`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+      setImage(response.data.url);
+    } catch (error) {
+      alert('Lỗi khi tải ảnh lên!');
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -65,11 +86,12 @@ export default function EditBlog() {
             onChange={(e) => setTitle(e.target.value)}
           />
           <input
-            type="text"
-            placeholder="URL ảnh"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            type="file"
+            accept="image/*"
+            onChange={uploadImage}
           />
+          {uploading && <p>Đang tải ảnh lên...</p>}
+          {image && <img src={image} alt="Ảnh bài viết" className="preview-image" />}
           <Editor
             apiKey="ur8ckyxvov6axv3grwbct3wtps7nv93ah15d2hiwosxnu2ea"
             value={content}
@@ -83,8 +105,8 @@ export default function EditBlog() {
               content_style: 'body { font-size: 14px; font-family: Arial, sans-serif; }',
             }}
           />
-          <button className="btn-update" onClick={updatePost}>
-            Cập nhật bài viết
+          <button className="btn-update" onClick={updatePost} disabled={uploading}>
+            {uploading ? 'Đang tải ảnh...' : 'Cập nhật bài viết'}
           </button>
         </section>
       )}
