@@ -40,8 +40,8 @@ export default function EditBlog() {
       alert('Chỉ được tải lên hình ảnh!');
       return;
     }
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Kích thước ảnh không được vượt quá 5MB!');
+    if (file.size > 20 * 1024 * 1024) {
+      alert('Kích thước ảnh không được vượt quá 20MB!');
       return;
     }
     setTempImage(URL.createObjectURL(file)); // Hiển thị ảnh tạm thời
@@ -59,7 +59,7 @@ export default function EditBlog() {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      setImage(data.url); // Cập nhật ảnh sau khi upload thành công
+      setImage(data.url);
       setContent((prevContent) => prevContent + `<img src="${data.url}" alt="Hình ảnh" />`);
     } catch (error) {
       console.error('Lỗi tải ảnh:', error);
