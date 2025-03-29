@@ -19,9 +19,9 @@ export default function CreateBlog() {
         const { data } = await axios.get(
           `https://res.cloudinary.com/dyrr4nn92/image/list/samples.json`
         );
-        setExistingImages(data.resources.map(img => img.secure_url));
+        setExistingImages(data.resources.map((img) => img.secure_url));
       } catch (error) {
-        console.error("Lỗi khi lấy danh sách ảnh từ Cloudinary:", error);
+        console.error('Lỗi khi lấy danh sách ảnh từ Cloudinary:', error);
       }
     };
     fetchImages();
@@ -60,18 +60,17 @@ export default function CreateBlog() {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        {/* Danh sách ảnh có sẵn */}
         <div className="image-gallery">
           <h3>Chọn ảnh từ Cloudinary:</h3>
           <div className="gallery-grid">
             {existingImages.map((imgUrl, index) => (
               <button
                 key={index}
-                src={imgUrl}
-                alt="Ảnh từ Cloudinary"
-                className={image === imgUrl ? "selected" : ""}
+                className={`image-button ${image === imgUrl ? 'selected' : ''}`}
                 onClick={() => setImage(imgUrl)}
-              />
+              >
+                <img src={imgUrl} alt="Ảnh từ Cloudinary" />
+              </button>
             ))}
           </div>
         </div>
