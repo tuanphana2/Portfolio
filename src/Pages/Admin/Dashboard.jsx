@@ -1,126 +1,91 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { FaEdit, FaTrash, FaPlus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import "./dashboard.scss";
+import { Plus } from "lucide-react";
+import { useState } from "react";
+import { Card, Button, Tab, Tabs, Table } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Dashboard() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 10; // Số bài viết trên mỗi trang
-  const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
+export default function AdminDashboard() {
+  const [customers, setCustomers] = useState([
+    { id: 1, name: "Nguyen Van A", email: "a@example.com", phone: "0123456789" },
+    { id: 2, name: "Tran Thi B", email: "b@example.com", phone: "0987654321" },
+  ]);
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
-  const fetchPosts = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/posts`);
-      setPosts(response.data);
-    } catch (error) {
-      console.error("Lỗi khi tải bài viết:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const deletePost = async (id) => {
-    if (!window.confirm("Bạn có chắc chắn muốn xóa bài viết này?")) return;
-
-    try {
-      await axios.delete(`${API_URL}/posts/${id}`);
-      setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
-      alert("Xóa bài viết thành công!");
-      fetchPosts();
-    } catch (error) {
-      alert("Lỗi khi xóa bài viết!");
-    }
-  };
-
-  // Xác định dữ liệu trên trang hiện tại
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  // Tổng số trang
-  const totalPages = Math.ceil(posts.length / postsPerPage);
+  const [posts, setPosts] = useState([
+    { id: 1, title: "Sự kiện 2025", author: "Admin", date: "2025-03-29" },
+    { id: 2, title: "Cập nhật tính năng mới", author: "Admin", date: "2025-03-28" },
+  ]);
 
   return (
-    <div className="dashboard-page">
-      <h1 className="dashboard-title">Quản Lý Blog</h1>
-
-      {/* Nút Thêm bài viết */}
-      <div className="table-header">
-        <button className="add-btn" onClick={() => navigate("/admin/create")}>
-          <FaPlus /> Thêm bài viết
-        </button>
-      </div>
-
-      {loading ? (
-        <p className="loading-text">Đang tải dữ liệu...</p>
-      ) : (
-        <>
-          <table>
-            <thead>
-              <tr>
-                <th>Tiêu đề</th>
-                <th>Ảnh</th>
-                <th>Hành động</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentPosts.length > 0 ? (
-                currentPosts.map((post) => (
-                  <tr key={post.id}>
-                    <td>{post.title}</td>
-                    <td>
-                      <img src={post.image} alt={post.title} />
-                    </td>
-                    <td>
-                      <button className="edit-btn" onClick={() => navigate(`/admin/edit/${post._id}`)}>
-                        <FaEdit />
-                      </button>
-                      <button className="delete-btn" onClick={() => deletePost(post._id)}>
-                        <FaTrash />
-                      </button>
-                    </td>
+    <div className="d-flex vh-100">
+      <aside className="bg-dark text-white p-4" style={{ width: "250px" }}>
+        <h2 className="h5">Admin Panel</h2>
+        <Tabs defaultActiveKey="customers" className="flex-column mt-3">
+          <Tab eventKey="customers" title="Quản lý Khách Hàng" />
+          <Tab eventKey="posts" title="Quản lý Bài Viết" />
+        </Tabs>
+      </aside>
+      
+      <main className="flex-grow-1 p-4">
+        <h1 className="h4 mb-3">Admin Dashboard</h1>
+        <Tabs defaultActiveKey="customers" className="mb-3">
+          <Tab eventKey="customers" title="Khách Hàng">
+            <Card className="p-3">
+              <div className="d-flex justify-content-between mb-3">
+                <h2 className="h5">Danh sách khách hàng</h2>
+                <Button variant="primary"><Plus size={16} /> Thêm khách hàng</Button>
+              </div>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Điện thoại</th>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="3">Không có bài viết nào.</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-
-          {/* PHÂN TRANG */}
-          {totalPages > 1 && (
-            <div className="pagination">
-              <button
-                className="pagination-btn"
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              >
-                <FaChevronLeft /> Trước
-              </button>
-              <span className="page-info">
-                Trang {currentPage} / {totalPages}
-              </span>
-              <button
-                className="pagination-btn"
-                disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-              >
-                Sau <FaChevronRight />
-              </button>
-            </div>
-          )}
-        </>
-      )}
+                </thead>
+                <tbody>
+                  {customers.map((customer) => (
+                    <tr key={customer.id}>
+                      <td>{customer.id}</td>
+                      <td>{customer.name}</td>
+                      <td>{customer.email}</td>
+                      <td>{customer.phone}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </Card>
+          </Tab>
+          
+          <Tab eventKey="posts" title="Bài Viết">
+            <Card className="p-3">
+              <div className="d-flex justify-content-between mb-3">
+                <h2 className="h5">Danh sách bài viết</h2>
+                <Button variant="primary"><Plus size={16} /> Thêm bài viết</Button>
+              </div>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tiêu đề</th>
+                    <th>Tác giả</th>
+                    <th>Ngày đăng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {posts.map((post) => (
+                    <tr key={post.id}>
+                      <td>{post.id}</td>
+                      <td>{post.title}</td>
+                      <td>{post.author}</td>
+                      <td>{post.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </Card>
+          </Tab>
+        </Tabs>
+      </main>
     </div>
   );
 }

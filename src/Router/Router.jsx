@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import About from '../Components/About/About';
-import CreateBlog from '../Components/Admin/CreateBlog';
-import EditBlog from '../Components/Admin/EditBlog';
+import CreateBlog from '../Components/Admin/ManageBlog/CreateBlog';
+import EditBlog from '../Components/Admin/ManageBlog/EditBlog';
+import ManageBlogs from '../Components/Admin/ManageBlog/ManageBlogs';
 import Root from '../Layouts/Root';
 import Admin from '../Pages/Admin/Admin';
 import Dashboard from '../Pages/Admin/Dashboard';
@@ -78,19 +79,25 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: <Login />, // Nếu chưa đăng nhập, tự động hiển thị trang Login
+        element: <Login />,
       },
       {
         path: 'dashboard',
-        element: <ProtectedRoute element={<Dashboard />} />, // Chỉ vào được khi có token
+        element: <ProtectedRoute element={<Dashboard />} />,
       },
       {
-        path: 'create',
-        element: <ProtectedRoute element={<CreateBlog />} />, // Chỉ vào được khi có token
-      },
-      {
-        path: 'edit/:id',
-        element: <ProtectedRoute element={<EditBlog />} />, // Chỉ vào được khi có token
+        path: 'manageBlogs',
+        element: <ProtectedRoute element={<ManageBlogs />} />,
+        children: [
+          {
+            path: 'create',
+            element: <ProtectedRoute element={<CreateBlog />} />,
+          },
+          {
+            path: 'edit/:id',
+            element: <ProtectedRoute element={<EditBlog />} />,
+          },
+        ],
       },
     ],
   },
