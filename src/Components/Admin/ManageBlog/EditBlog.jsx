@@ -40,8 +40,8 @@ export default function EditBlog() {
       alert('Chỉ được tải lên hình ảnh!');
       return;
     }
-    if (file.size > 20 * 1024 * 1024) {
-      alert('Kích thước ảnh không được vượt quá 20MB!');
+    if (file.size > 5 * 1024 * 1024) {
+      alert('Kích thước ảnh không được vượt quá 5MB!');
       return;
     }
     setTempImage(URL.createObjectURL(file)); // Hiển thị ảnh tạm thời
