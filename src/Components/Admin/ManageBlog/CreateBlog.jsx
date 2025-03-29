@@ -99,7 +99,7 @@ export default function CreateBlog() {
             // ✅ Cho phép upload ảnh trực tiếp
             images_upload_handler: async (blobInfo, success, failure) => {
               const formData = new FormData();
-              formData.append('image', blobInfo.blob());
+              formData.append('image', blobInfo.blob(), blobInfo.filename());
 
               try {
                 const { data } = await axios.post(`${API_URL}/api/upload`, formData, {
