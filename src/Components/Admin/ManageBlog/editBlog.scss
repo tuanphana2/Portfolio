@@ -1,73 +1,66 @@
 .edit-blog-page {
-  background-color: #121212;
-  color: #ffffff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
+  background: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  color: #fff;
 
   .edit-blog-title {
-    font-size: 2rem;
-    color: #C9F31D;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 20px;
-  }
-
-  .loading-text {
-    font-size: 1.2rem;
     color: #C9F31D;
   }
 
   .edit-blog {
-    width: 100%;
-    max-width: 600px;
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(201, 243, 29, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
-    input[type="text"],
-    input[type="file"] {
+    input[type='text'],
+    input[type='file'] {
       width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
-      background-color: #2a2a2a;
-      color: #ffffff;
       border: 1px solid #C9F31D;
       border-radius: 5px;
-      outline: none;
+      font-size: 16px;
+      background: #2e2e2e;
+      color: #fff;
     }
 
     .preview-image {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
+      max-width: 100%;
+      height: auto;
       border-radius: 5px;
-      margin-bottom: 15px;
+      margin-top: 10px;
       border: 2px solid #C9F31D;
     }
 
-    .tox .tox-editor-container {
-      background-color: #2a2a2a !important;
+    .tox {
       border: 1px solid #C9F31D;
+      border-radius: 5px;
     }
 
     .btn-update {
-      width: 100%;
       padding: 10px;
-      background-color: #C9F31D;
-      color: #121212;
-      font-size: 1rem;
-      font-weight: bold;
+      background: #C9F31D;
+      color: #1e1e1e;
       border: none;
       border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background 0.3s;
+      font-weight: bold;
+
       &:hover {
-        background-color: #a8d415;
+        background: #a8d217;
       }
+
       &:disabled {
-        background-color: #5e5e5e;
+        background: #555;
         cursor: not-allowed;
       }
     }

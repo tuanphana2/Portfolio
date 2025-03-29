@@ -1,91 +1,67 @@
 .create-blog-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  background: #181818; // Dark mode background
-  color: #f1f1f1;
+  background: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  color: #fff;
 
-  h1 {
+  .create-blog-title {
     text-align: center;
-    font-size: 48px;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 20px;
-    color: #C9F31D; // Highlight tiêu đề
+    color: #C9F31D;
   }
 
   .create-blog {
-    width: 100%;
-    max-width: 800px;
-    background: #1e1e1e; // Màu nền tối
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 
-    input {
+    input[type='text'],
+    input[type='file'] {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #555;
+      padding: 10px;
+      border: 1px solid #C9F31D;
       border-radius: 5px;
       font-size: 16px;
-      background: #2a2a2a;
+      background: #2e2e2e;
       color: #fff;
-      transition: border-color 0.3s ease;
-
-      &:focus {
-        border-color: #C9F31D; // Highlight khi focus
-        outline: none;
-      }
     }
 
-    // Style cho TinyMCE
-    .tox {
+    .preview-image {
+      max-width: 100%;
+      height: auto;
       border-radius: 5px;
-      overflow: hidden;
+      margin-top: 10px;
+      border: 2px solid #C9F31D;
     }
 
-    .tox-tinymce {
-      border: 1px solid #555 !important;
-      background: #2a2a2a !important;
-    }
-
-    .tox-toolbar {
-      background: #333 !important;
-    }
-
-    .tox-editor-container {
-      border-top: none;
-      background: #222 !important;
-    }
-
-    .tox-statusbar {
-      display: none; // Ẩn status bar của TinyMCE
-    }
-
-    .tox-edit-area {
-      color: #fff !important; // Màu chữ trong trình soạn thảo
+    .tox {
+      border: 1px solid #C9F31D;
+      border-radius: 5px;
     }
 
     .btn-post {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      color: #121212;
-      background: #C9F31D; // Highlight nút đăng bài
+      padding: 10px;
+      background: #C9F31D;
+      color: #1e1e1e;
       border: none;
       border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s;
       font-weight: bold;
-      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 
       &:hover {
-        background: #a7d318;
-        color: #000;
-        transform: scale(1.05);
+        background: #a8d217;
       }
 
-      &:active {
-        transform: scale(0.95);
+      &:disabled {
+        background: #555;
+        cursor: not-allowed;
       }
     }
   }
