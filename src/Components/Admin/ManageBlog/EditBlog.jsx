@@ -114,7 +114,8 @@ export default function EditBlog() {
                 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code',
               content_style: 'body { font-size: 14px; font-family: Arial, sans-serif; }',
               images_upload_handler: async (blobInfo, success, failure) => {
-                console.log(typeof success, typeof failure); // Kiểm tra xem có phải function không
+                console.log('Uploading image:', blobInfo.blob());
+
                 const formData = new FormData();
                 formData.append('image', blobInfo.blob());
 
@@ -123,18 +124,16 @@ export default function EditBlog() {
                     headers: { 'Content-Type': 'multipart/form-data' },
                   });
 
-                  if (typeof success === 'function') {
+                  console.log('Response from server:', data); // Xem dữ liệu trả về
+
+                  if (data && data.url) {
                     success(data.url);
                   } else {
-                    console.error('success is not a function');
+                    failure('Không nhận được đường dẫn ảnh!');
                   }
                 } catch (error) {
                   console.error('Lỗi upload ảnh:', error);
-                  if (typeof failure === 'function') {
-                    failure('Không thể tải ảnh lên!');
-                  } else {
-                    console.error('failure is not a function');
-                  }
+                  failure('Không thể tải ảnh lên!');
                 }
               },
             }}
