@@ -50,19 +50,23 @@ export default function EditBlog() {
 
   const uploadImage = async (file) => {
     const formData = new FormData();
-    formData.append('image', file);
-    setUploading(true);
+    formData.append('image', file); // Key phải là "image"
+
     try {
       const { data } = await axios.post(`${API_URL}/api/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
-      setImage(data.url);
-      setContent((prevContent) => prevContent + `<img src="${data.url}" alt="Hình ảnh" />`);
+
+      console.log('Response from server:', data);
+
+      if (data.url) {
+        setImage(data.url); // Cập nhật ảnh hiển thị
+      } else {
+        alert('Không nhận được URL hợp lệ!');
+      }
     } catch (error) {
       console.error('Lỗi tải ảnh:', error);
       alert('Không thể tải ảnh lên!');
-    } finally {
-      setUploading(false);
     }
   };
 
