@@ -23,7 +23,7 @@ const ProtectedRoute = ({ element }) => {
 
   useEffect(() => {
     const checkAuth = () => setToken(localStorage.getItem('token'));
-    window.addEventListener('storage', checkAuth); // Lắng nghe thay đổi localStorage
+    window.addEventListener('storage', checkAuth);
     return () => window.removeEventListener('storage', checkAuth);
   }, []);
 
@@ -74,13 +74,13 @@ export const router = createBrowserRouter([
     ],
   },
   {
+    path: '/admin/login',
+    element: <Login />,
+  },
+  {
     path: '/admin',
     element: <Admin />,
     children: [
-      {
-        path: 'login',
-        element: <Login />,
-      },
       {
         path: 'dashboard',
         element: <ProtectedRoute element={<Dashboard />} />,
