@@ -8,7 +8,7 @@ export default function Dashboard() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 10; // Số bài viết trên mỗi trang
+  const postsPerPage = 10;
   const navigate = useNavigate();
   const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
 
@@ -97,7 +97,6 @@ export default function Dashboard() {
             </tbody>
           </table>
 
-          {/* PHÂN TRANG */}
           {totalPages > 1 && (
             <div className="pagination">
               <button
