@@ -25,14 +25,14 @@ const Admin = () => {
 
   return (
     <div className="admin-layout">
-      <h2>Admin Dashboard</h2>
-      {!isLoginPage && isLoggedIn && (
-        <header className="admin-header">
+      <header className="admin-header">
+        <h2>Admin Dashboard</h2>
+        {!isLoginPage && isLoggedIn && (
           <button className="logout-btn" onClick={handleLogout}>
             Đăng xuất
           </button>
-        </header>
-      )}
+        )}
+      </header>
       <div className="admin-content">
         {!isLoginPage && isLoggedIn && (
           <aside className="admin-sidebar">
