@@ -93,7 +93,12 @@ export default function EditBlog() {
         <p className="loading-text">Đang tải dữ liệu...</p>
       ) : (
         <section className="edit-blog">
-          <input type="text" placeholder="Tiêu đề bài viết" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input
+            type="text"
+            placeholder="Tiêu đề bài viết"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
           <input type="file" accept="image/*" onChange={handleFileChange} />
           {uploading && <p>Đang tải ảnh lên...</p>}
           <img src={tempImage || image} alt="Ảnh bài viết" className="preview-image" />
@@ -105,19 +110,31 @@ export default function EditBlog() {
               height: 400,
               menubar: true,
               plugins: 'lists link image table code',
-              toolbar: 'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code',
+              toolbar:
+                'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code',
               content_style: 'body { font-size: 14px; font-family: Arial, sans-serif; }',
               images_upload_handler: async (blobInfo, success, failure) => {
+                console.log(typeof success, typeof failure); // Kiểm tra xem có phải function không
                 const formData = new FormData();
                 formData.append('image', blobInfo.blob());
+
                 try {
                   const { data } = await axios.post(`${API_URL}/api/upload`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                   });
-                  success(data.url);
+
+                  if (typeof success === 'function') {
+                    success(data.url);
+                  } else {
+                    console.error('success is not a function');
+                  }
                 } catch (error) {
                   console.error('Lỗi upload ảnh:', error);
-                  failure('Không thể tải ảnh lên!');
+                  if (typeof failure === 'function') {
+                    failure('Không thể tải ảnh lên!');
+                  } else {
+                    console.error('failure is not a function');
+                  }
                 }
               },
             }}
