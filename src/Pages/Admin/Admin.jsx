@@ -17,7 +17,7 @@ const Admin = () => {
     if (window.confirm('Bạn có chắc chắn muốn đăng xuất?')) {
       localStorage.removeItem('token');
       setIsLoggedIn(false);
-      navigate('/admin', { replace: true });
+      navigate('/admin/login', { replace: true });
     }
   };
 
