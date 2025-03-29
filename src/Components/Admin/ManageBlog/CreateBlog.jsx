@@ -14,7 +14,6 @@ export default function CreateBlog() {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Kiểm tra kích thước và loại file
     if (!file.type.startsWith('image/')) {
       alert('Chỉ được phép tải lên hình ảnh!');
       return;
@@ -33,7 +32,7 @@ export default function CreateBlog() {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      setImage(response.data.url); // Lưu trực tiếp URL trả về từ Cloudinary
+      setImage(response.data.url);
     } catch (error) {
       console.error('Lỗi tải ảnh:', error.response?.data || error.message);
       alert('Lỗi khi tải ảnh lên!');
@@ -75,14 +74,9 @@ export default function CreateBlog() {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        {/* Ẩn input URL nếu chưa tải ảnh */}
-        {image && <input type="text" value={image} readOnly />}
-
         <input type="file" accept="image/*" onChange={handleFileChange} />
         {uploading && <p>Đang tải ảnh lên...</p>}
-
-        {/* Hiển thị ảnh xem trước nếu đã tải lên */}
-        {image && <img src={image} alt="Ảnh bài viết" className="preview-image" />}
+        {image && <img src={image} alt="Banner bài viết" className="preview-image" />}
 
         <Editor
           apiKey="ur8ckyxvov6axv3grwbct3wtps7nv93ah15d2hiwosxnu2ea"
@@ -96,8 +90,8 @@ export default function CreateBlog() {
               'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code',
             content_style: 'body { font-size: 14px; font-family: Arial, sans-serif; }',
 
-            // ✅ Cho phép upload ảnh trực tiếp
             images_upload_handler: async (blobInfo, success, failure) => {
+              setUploading(true);
               const formData = new FormData();
               formData.append('image', blobInfo.blob(), blobInfo.filename());
 
@@ -106,10 +100,16 @@ export default function CreateBlog() {
                   headers: { 'Content-Type': 'multipart/form-data' },
                 });
 
-                success(data.url); // TinyMCE sẽ hiển thị ảnh từ URL trả về
+                if (data.url) {
+                  success(data.url);
+                } else {
+                  failure('Không thể tải ảnh lên!');
+                }
               } catch (error) {
                 console.error('Lỗi upload ảnh:', error);
                 failure('Không thể tải ảnh lên!');
+              } finally {
+                setUploading(false);
               }
             },
           }}
