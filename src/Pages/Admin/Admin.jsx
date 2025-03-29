@@ -25,27 +25,32 @@ const Admin = () => {
 
   return (
     <div className="admin-layout">
+      <h2>Admin Dashboard</h2>
       {!isLoginPage && isLoggedIn && (
-        <aside className="admin-sidebar">
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="/admin/manageCustomers" activeClassName="active">Quản lý khách hàng</NavLink>
-              </li>
-              <li>
-                <NavLink to="/admin/manageBlogs" activeClassName="active">Quản lý bài viết</NavLink>
-              </li>
-            </ul>
-          </nav>
-        </aside>
+        <header className="admin-header">
+          <button className="logout-btn" onClick={handleLogout}>
+            Đăng xuất
+          </button>
+        </header>
       )}
-
       <div className="admin-content">
-        <h2>Admin Dashboard</h2>
         {!isLoginPage && isLoggedIn && (
-          <header className="admin-header">
-            <button className="logout-btn" onClick={handleLogout}>Đăng xuất</button>
-          </header>
+          <aside className="admin-sidebar">
+            <nav>
+              <ul>
+                <li>
+                  <NavLink to="/admin/manageCustomers" activeClassName="active">
+                    Quản lý khách hàng
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/admin/manageBlogs" activeClassName="active">
+                    Quản lý bài viết
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+          </aside>
         )}
         <Outlet />
       </div>

@@ -3,65 +3,73 @@
     min-height: 100vh;
     background: #1e1e1e;
     color: #ffffff;
+    flex-direction: column;
   
-    .admin-sidebar {
-      width: 250px;
-      background: #252526;
-      color: #ecf0f1;
-      padding: 20px;
+    .admin-header {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: #252526;
   
-      nav {
-        ul {
-          list-style: none;
-          padding: 0;
+      .logout-btn {
+        background: #e74c3c;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
   
-          li {
-            margin-bottom: 15px;
-  
-            a {
-              color: #ecf0f1;
-              text-decoration: none;
-              display: block;
-              padding: 10px;
-              border-radius: 5px;
-              transition: background 0.3s, color 0.3s;
-  
-              &:hover,
-              &.active {
-                background: #C9F31D;
-                color: #1e1e1e;
-              }
-            }
-          }
+        &:hover {
+          background: #c0392b;
         }
       }
     }
   
     .admin-content {
-      flex-grow: 1;
-      padding: 20px;
-      background: #2d2d2d;
+      display: flex;
+      flex: 1;
   
-      .admin-header {
+      .admin-sidebar {
+        width: 250px;
+        background: #252526;
+        color: #ecf0f1;
+        padding: 20px;
         display: flex;
-        justify-content: flex-end;
-        padding-bottom: 10px;
+        flex-direction: column;
   
-        .logout-btn {
-          background: #e74c3c;
-          color: #fff;
-          border: none;
-          padding: 10px 15px;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: background 0.3s;
+        nav {
+          ul {
+            list-style: none;
+            padding: 0;
   
-          &:hover {
-            background: #c0392b;
+            li {
+              margin-bottom: 15px;
+  
+              a {
+                color: #ecf0f1;
+                text-decoration: none;
+                display: block;
+                padding: 10px;
+                border-radius: 5px;
+                transition: background 0.3s, color 0.3s;
+  
+                &:hover,
+                &.active {
+                  background: #C9F31D;
+                  color: #1e1e1e;
+                }
+              }
+            }
           }
         }
+      }
+  
+      .admin-main {
+        flex-grow: 1;
+        padding: 20px;
+        background: #2d2d2d;
       }
     }
   }
