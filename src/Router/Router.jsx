@@ -27,7 +27,7 @@ const ProtectedRoute = ({ element }) => {
     return () => window.removeEventListener('storage', checkAuth);
   }, []);
 
-  return token ? element : <Navigate to="/admin" replace />;
+  return token ? element : <Navigate to="/admin/login" replace />;
 };
 
 export const router = createBrowserRouter([
@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
     element: <Admin />,
     children: [
       {
-        path: '',
+        path: 'login',
         element: <Login />,
       },
       {
