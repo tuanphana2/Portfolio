@@ -1,5 +1,6 @@
 import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 import { useState } from 'react';
 
 import UploadPopup from '../../Shared/Popup/PopupImage';
@@ -15,17 +16,23 @@ export default function CreateBlog() {
   const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
 
   const savePost = async () => {
-    const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('token'); // Lấy token từ sessionStorage
     if (!token) {
       alert('Bạn chưa đăng nhập!');
       return;
     }
-
+    const decoded = jwtDecode(token);
+    console.log('📌 Dữ liệu từ token:', decoded);
+    console.log('🛠 Gửi request:', {
+      url: `${API_URL}/posts`,
+      headers: { Authorization: `Bearer ${token}` },
+      body: { title, image, content },
+    });
     try {
       await axios.post(
         `${API_URL}/posts`,
         { title, image, content },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } } // Đảm bảo gửi token
       );
       alert('Bài viết đã được đăng!');
       setTitle('');

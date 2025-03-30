@@ -18,11 +18,19 @@ export default function Login() {
     try {
       const res = await axios.post(`${API_URL}/auth/login`, { username, password });
 
-      // Lưu token vào sessionStorage thay vì localStorage
-      sessionStorage.setItem('token', res.data.token);
+      console.log('Response từ API:', res.data); // Kiểm tra toàn bộ response
+
+      const token = res.data?.token; // Kiểm tra key 'token' có tồn tại không
+      if (!token) {
+        throw new Error('API không trả về token');
+      }
+
+      sessionStorage.setItem('token', token);
+      console.log('Token đã lưu:', sessionStorage.getItem('token'));
 
       navigate('/admin/dashboard');
     } catch (error) {
+      console.error('Lỗi đăng nhập:', error);
       setError(error.response?.data?.message || 'Đăng nhập thất bại, vui lòng thử lại!');
     } finally {
       setLoading(false);
