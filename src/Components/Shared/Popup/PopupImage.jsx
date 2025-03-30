@@ -7,16 +7,20 @@ export default function UploadPopup({ isOpen, onClose, onSelect }) {
   const [files, setFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   useEffect(() => {
-    if (isOpen) fetchFiles();
+    if (isOpen) fetchFiles(1);
   }, [isOpen]);
 
-  const fetchFiles = async () => {
+  const fetchFiles = async (pageNumber) => {
     try {
-      const res = await axios.get(`${API_URL}/api`);
-      setFiles(res.data);
+      const res = await axios.get(`${API_URL}/api?page=${pageNumber}&limit=8`);
+      setFiles(res.data.files);
+      setTotalPages(res.data.totalPages);
+      setPage(res.data.currentPage);
     } catch (error) {
       console.error('Lỗi lấy danh sách file:', error);
     }
@@ -38,7 +42,7 @@ export default function UploadPopup({ isOpen, onClose, onSelect }) {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
-      setFiles([...files, { url: res.data.url }]); // Cập nhật danh sách file
+      fetchFiles(1); // Cập nhật lại danh sách sau khi upload
       setSelectedFile(null);
     } catch (error) {
       console.error('Lỗi upload:', error.response ? error.response.data : error.message);
@@ -65,9 +69,13 @@ export default function UploadPopup({ isOpen, onClose, onSelect }) {
               </button>
             ))}
           </div>
-          <button className="close-btn" onClick={onClose}>
-            Đóng
-          </button>
+          {/* Phân trang */}
+          <div className="pagination">
+            <button disabled={page === 1} onClick={() => fetchFiles(page - 1)}>Trang trước</button>
+            <span>Trang {page} / {totalPages}</span>
+            <button disabled={page === totalPages} onClick={() => fetchFiles(page + 1)}>Trang sau</button>
+          </div>
+          <button className="close-btn" onClick={onClose}>Đóng</button>
         </div>
       </div>
     )
