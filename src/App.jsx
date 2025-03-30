@@ -9,15 +9,6 @@ import 'aos/dist/aos.css';
 const App = () => {
   useEffect(() => {
     AOS.init();
-    const handleUnload = () => {
-      const section = document.querySelector('section');
-      if (section) {
-        section.remove();
-      }
-    };
-
-    window.addEventListener('beforeunload', handleUnload);
-    return () => window.removeEventListener('beforeunload', handleUnload);
   }, []);
 
   return (

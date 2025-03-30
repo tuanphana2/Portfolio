@@ -18,7 +18,7 @@ export default function Login() {
     try {
       const res = await axios.post(`${API_URL}/auth/login`, { username, password });
 
-      // Lưu token vào sessionStorage (tự động mất khi đóng trình duyệt)
+      // Lưu token vào sessionStorage thay vì localStorage
       sessionStorage.setItem('token', res.data.token);
 
       navigate('/admin/dashboard');

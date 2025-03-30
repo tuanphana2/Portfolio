@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'create',
-        element: <CreateBlog />,
+        element: <ProtectedRoute element={<CreateBlog />} />,
       },
       {
         path: 'edit/:id',
