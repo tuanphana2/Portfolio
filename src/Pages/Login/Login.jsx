@@ -18,10 +18,9 @@ export default function Login() {
     try {
       const res = await axios.post(`${API_URL}/auth/login`, { username, password });
 
-      // Lưu token vào localStorage
-      localStorage.setItem('token', res.data.token);
+      // Lưu token vào sessionStorage (tự động mất khi đóng trình duyệt)
+      sessionStorage.setItem('token', res.data.token);
 
-      // Chuyển hướng đến trang chính sau khi đăng nhập
       navigate('/admin/dashboard');
     } catch (error) {
       setError(error.response?.data?.message || 'Đăng nhập thất bại, vui lòng thử lại!');

@@ -3,19 +3,19 @@ import { Outlet, useNavigate, useLocation, NavLink } from 'react-router-dom';
 import './admin.scss';
 
 const Admin = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+  const [isLoggedIn, setIsLoggedIn] = useState(!!sessionStorage.getItem('token'));
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    const checkAuth = () => setIsLoggedIn(!!localStorage.getItem('token'));
+    const checkAuth = () => setIsLoggedIn(!!sessionStorage.getItem('token'));
     window.addEventListener('storage', checkAuth);
     return () => window.removeEventListener('storage', checkAuth);
   }, []);
 
   const handleLogout = () => {
     if (window.confirm('Bạn có chắc chắn muốn đăng xuất?')) {
-      localStorage.removeItem('token');
+      sessionStorage.removeItem('token');
       setIsLoggedIn(false);
       navigate('/admin/login', { replace: true });
     }
@@ -39,12 +39,12 @@ const Admin = () => {
             <nav>
               <ul>
                 <li>
-                  <NavLink to="/admin/manageCustomers" activeClassName="active">
+                  <NavLink to="/admin/manageCustomers" className={({ isActive }) => isActive ? 'active' : ''}>
                     Quản lý khách hàng
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/admin/manageBlogs" activeClassName="active">
+                  <NavLink to="/admin/manageBlogs" className={({ isActive }) => isActive ? 'active' : ''}>
                     Quản lý bài viết
                   </NavLink>
                 </li>
