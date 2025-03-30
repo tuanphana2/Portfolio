@@ -47,6 +47,7 @@ export default function Login() {
             placeholder="Mật khẩu"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && login()}
           />
           <button onClick={login} disabled={loading}>
             {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}

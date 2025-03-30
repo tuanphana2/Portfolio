@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import About from '../Components/About/About';
@@ -19,13 +18,7 @@ import Programs from '../Pages/Program';
 import Success from '../Pages/Success';
 
 const ProtectedRoute = ({ element }) => {
-  const [token, setToken] = useState(localStorage.getItem('token'));
-
-  useEffect(() => {
-    const checkAuth = () => setToken(localStorage.getItem('token'));
-    window.addEventListener('storage', checkAuth);
-    return () => window.removeEventListener('storage', checkAuth);
-  }, []);
+  const token = sessionStorage.getItem('token');
 
   return token ? element : <Navigate to="/admin/login" replace />;
 };
