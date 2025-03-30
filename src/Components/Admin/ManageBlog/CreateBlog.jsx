@@ -78,26 +78,30 @@ export default function CreateBlog() {
             menubar: true,
             plugins: 'lists link image table code',
             toolbar:
-              'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code | customInsertImage',
+              'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code',
             content_style: 'body { font-size: 14px; font-family: Arial, sans-serif; }',
-            setup: (editor) => {
-              editor.ui.registry.addMenuItem('image', {
-                text: 'Image...',
-                icon: 'image',
-                onAction: () => setTinyMCEPopupOpen(true), // Mở popup upload ảnh
-              });
 
-              editor.settings.file_picker_callback = (callback, value, meta) => {
+            file_picker_callback: (callback, value, meta) => {
+              if (meta.filetype === 'image') {
                 setTinyMCEPopupOpen(true);
 
                 window.selectImageForTinyMCE = (url) => {
                   callback(url, { alt: 'Hình ảnh tải lên' });
                   setTinyMCEPopupOpen(false);
                 };
-              };
+              }
+            },
+
+            setup: (editor) => {
+              editor.ui.registry.addMenuItem('image', {
+                text: 'Image...',
+                icon: 'image',
+                onAction: () => setTinyMCEPopupOpen(true),
+              });
             },
           }}
         />
+
         <button className="btn-post" onClick={savePost} disabled={uploading}>
           {uploading ? 'Đang tải ảnh...' : 'Đăng bài'}
         </button>
