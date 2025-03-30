@@ -48,7 +48,7 @@ export default function CreateBlog() {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <button onClick={() => setPopupOpen(true)}>Chọn ảnh</button>
+        <button className='btn-choose' onClick={() => setPopupOpen(true)}>Chọn ảnh</button>
         {image && (
           <div className="image-preview">
             <img src={image} alt="Ảnh đã chọn" className="preview-image" />

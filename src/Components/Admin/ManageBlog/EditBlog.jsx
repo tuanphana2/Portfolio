@@ -1,7 +1,10 @@
 import { Editor } from '@tinymce/tinymce-react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { jwtDecode } from 'jwt-decode';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+
+import UploadPopup from '../../Shared/Popup/PopupImage';
 import './editBlog.scss';
 
 export default function EditBlog() {
@@ -9,65 +12,29 @@ export default function EditBlog() {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
-  const [tempImage, setTempImage] = useState(null);
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isTinyMCEPopupOpen, setTinyMCEPopupOpen] = useState(false);
   const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
 
   useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/posts/${id}`);
+        setTitle(response.data.title);
+        setImage(response.data.image);
+        setContent(response.data.content);
+      } catch (error) {
+        alert('Không thể tải bài viết!');
+        navigate('/');
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchPost();
-  }, []);
-
-  const fetchPost = async () => {
-    try {
-      const { data } = await axios.get(`${API_URL}/posts/${id}`);
-      setTitle(data.title);
-      setImage(data.image);
-      setContent(data.content);
-    } catch (error) {
-      console.error('Lỗi khi tải bài viết:', error);
-      alert('Không tìm thấy bài viết!');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    if (!file.type.startsWith('image/')) {
-      alert('Chỉ được tải lên hình ảnh!');
-      return;
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      alert('Kích thước ảnh không được vượt quá 5MB!');
-      return;
-    }
-    setTempImage(URL.createObjectURL(file)); // Hiển thị ảnh tạm thời
-    uploadImage(file); // Gọi hàm upload
-  };
-
-  const uploadImage = async (file) => {
-    const formData = new FormData();
-    formData.append('image', file);
-
-    setUploading(true);
-
-    try {
-      const { data } = await axios.post(`${API_URL}/api/upload`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-
-      setImage(data.url);
-      setContent((prevContent) => prevContent + `<img src="${data.url}" alt="Hình ảnh" />`);
-    } catch (error) {
-      console.error('Lỗi tải ảnh:', error);
-      alert('Không thể tải ảnh lên!');
-    } finally {
-      setUploading(false);
-    }
-  };
+  }, [id, API_URL, navigate]);
 
   const updatePost = async () => {
     const token = sessionStorage.getItem('token');
@@ -82,70 +49,73 @@ export default function EditBlog() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert('Bài viết đã được cập nhật!');
-      navigate('/admin/dashboard');
+      navigate('/');
     } catch (error) {
-      console.error('Lỗi khi cập nhật bài viết:', error.response?.data || error.message);
       alert('Bạn không có quyền chỉnh sửa bài viết!');
     }
   };
 
+  if (loading) return <p>Đang tải bài viết...</p>;
+
   return (
     <div className="edit-blog-page">
       <h1 className="edit-blog-title">Chỉnh sửa bài viết</h1>
-      {loading ? (
-        <p className="loading-text">Đang tải dữ liệu...</p>
-      ) : (
-        <section className="edit-blog">
-          <input
-            type="text"
-            placeholder="Tiêu đề bài viết"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input type="file" accept="image/*" onChange={handleFileChange} />
-          {uploading && <p>Đang tải ảnh lên...</p>}
-          <img src={tempImage || image} alt="Ảnh bài viết" className="preview-image" />
-          <Editor
-            apiKey="ur8ckyxvov6axv3grwbct3wtps7nv93ah15d2hiwosxnu2ea"
-            value={content}
-            onEditorChange={setContent}
-            init={{
-              height: 400,
-              menubar: true,
-              plugins: 'lists link image table code',
-              toolbar:
-                'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code',
-              content_style: 'body { font-size: 14px; font-family: Arial, sans-serif; }',
-              images_upload_handler: async (blobInfo, success, failure) => {
-                console.log('Uploading image:', blobInfo.blob());
+      <section className="edit-blog">
+        <input
+          type="text"
+          placeholder="Tiêu đề bài viết"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-                const formData = new FormData();
-                formData.append('image', blobInfo.blob());
+        <button className='btn-choose' onClick={() => setPopupOpen(true)}>Chọn ảnh</button>
+        {image && (
+          <div className="image-preview">
+            <img src={image} alt="Ảnh đã chọn" className="preview-image" />
+            <input
+              type="text"
+              value={image}
+              readOnly
+              className="image-url-input"
+              onClick={(e) => e.target.select()}
+            />
+          </div>
+        )}
 
-                try {
-                  const { data } = await axios.post(`${API_URL}/api/upload`, formData, {
-                    headers: { 'Content-Type': 'multipart/form-data' },
-                  });
+        <Editor
+          apiKey="ur8ckyxvov6axv3grwbct3wtps7nv93ah15d2hiwosxnu2ea"
+          value={content}
+          onEditorChange={setContent}
+          init={{
+            height: 400,
+            menubar: true,
+            plugins: 'lists link image table code',
+            toolbar:
+              'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code',
+            content_style: 'body { font-size: 14px; font-family: Arial, sans-serif; }',
+            file_picker_callback: (callback, value, meta) => {
+              if (meta.filetype === 'image') {
+                setTinyMCEPopupOpen(true);
+                window.selectImageForTinyMCE = (url) => {
+                  callback(url, { alt: 'Hình ảnh tải lên' });
+                  setTinyMCEPopupOpen(false);
+                };
+              }
+            },
+          }}
+        />
 
-                  console.log('Response from server:', data); // Kiểm tra dữ liệu trả về
+        <button className="btn-update" onClick={updatePost} disabled={uploading}>
+          {uploading ? 'Đang cập nhật...' : 'Cập nhật bài viết'}
+        </button>
+      </section>
 
-                  if (data && data.url) {
-                    success(data.url); // Đảm bảo truyền URL dạng string
-                  } else {
-                    failure('Không nhận được đường dẫn ảnh!');
-                  }
-                } catch (error) {
-                  console.error('Lỗi upload ảnh:', error);
-                  failure('Không thể tải ảnh lên!');
-                }
-              },
-            }}
-          />
-          <button className="btn-update" onClick={updatePost} disabled={uploading}>
-            {uploading ? 'Đang tải ảnh...' : 'Cập nhật bài viết'}
-          </button>
-        </section>
-      )}
+      <UploadPopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} onSelect={setImage} />
+      <UploadPopup isOpen={isTinyMCEPopupOpen} onClose={() => setTinyMCEPopupOpen(false)} onSelect={(url) => {
+        if (window.selectImageForTinyMCE) {
+          window.selectImageForTinyMCE(url);
+        }
+      }} />
     </div>
   );
 }

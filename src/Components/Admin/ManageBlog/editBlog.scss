@@ -7,6 +7,39 @@
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   color: #fff;
 
+  .btn-choose {
+    height: 40px;
+  }
+
+  .image-preview {
+    width: 100%;
+    max-width: 800px;
+    margin: -10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .preview-image {
+      width: 100%;
+      height: auto;
+      max-height: 300px; // Điều chỉnh chiều cao tối đa
+      object-fit: cover; // Giữ tỷ lệ và crop hình ảnh nếu cần
+      border-radius: 8px;
+      border: 2px solid #C9F31D;
+    }
+
+    .image-url-input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #444;
+      background: #333;
+      color: white;
+      text-align: center;
+      border-radius: 4px;
+    }
+  }
+
   .edit-blog-title {
     text-align: center;
     font-size: 24px;
