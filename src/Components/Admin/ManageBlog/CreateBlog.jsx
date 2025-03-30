@@ -15,7 +15,7 @@ export default function CreateBlog() {
   const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
 
   const savePost = async () => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     if (!token) {
       alert('Bạn chưa đăng nhập!');
       return;

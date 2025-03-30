@@ -1,8 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { FaEdit, FaTrash, FaPlus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import "./manageBlogs.scss";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { FaEdit, FaTrash, FaPlus, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import './manageBlogs.scss';
 
 export default function Dashboard() {
   const [posts, setPosts] = useState([]);
@@ -10,7 +10,7 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL || "https://ntd-portfolio-be.onrender.com";
+  const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
 
   useEffect(() => {
     fetchPosts();
@@ -21,22 +21,27 @@ export default function Dashboard() {
       const response = await axios.get(`${API_URL}/posts`);
       setPosts(response.data);
     } catch (error) {
-      console.error("Lỗi khi tải bài viết:", error);
+      console.error('Lỗi khi tải bài viết:', error);
     } finally {
       setLoading(false);
     }
   };
 
   const deletePost = async (id) => {
-    if (!window.confirm("Bạn có chắc chắn muốn xóa bài viết này?")) return;
+    const token = sessionStorage.getItem('token'); // Lấy token từ sessionStorage
+    if (!token) {
+      alert('Bạn chưa đăng nhập!');
+      return;
+    }
+    if (!window.confirm('Bạn có chắc chắn muốn xóa bài viết này?')) return;
 
     try {
       await axios.delete(`${API_URL}/posts/${id}`);
       setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
-      alert("Xóa bài viết thành công!");
+      alert('Xóa bài viết thành công!');
       fetchPosts();
     } catch (error) {
-      alert("Lỗi khi xóa bài viết!");
+      alert('Lỗi khi xóa bài viết!');
     }
   };
 
@@ -54,7 +59,7 @@ export default function Dashboard() {
 
       {/* Nút Thêm bài viết */}
       <div className="table-header">
-        <button className="add-btn" onClick={() => navigate("/admin/create")}>
+        <button className="add-btn" onClick={() => navigate('/admin/create')}>
           <FaPlus /> Thêm bài viết
         </button>
       </div>
@@ -80,7 +85,10 @@ export default function Dashboard() {
                       <img src={post.image} alt={post.title} />
                     </td>
                     <td>
-                      <button className="edit-btn" onClick={() => navigate(`/admin/edit/${post._id}`)}>
+                      <button
+                        className="edit-btn"
+                        onClick={() => navigate(`/admin/edit/${post._id}`)}
+                      >
                         <FaEdit />
                       </button>
                       <button className="delete-btn" onClick={() => deletePost(post._id)}>
