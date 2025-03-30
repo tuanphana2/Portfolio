@@ -20,8 +20,7 @@
     flex-direction: column;
     gap: 15px;
 
-    input[type='text'],
-    input[type='file'] {
+    input[type='text'] {
       width: 100%;
       padding: 10px;
       border: 1px solid #C9F31D;
@@ -31,17 +30,40 @@
       color: #fff;
     }
 
-    .preview-image {
-      max-width: 100%;
-      height: auto;
-      border-radius: 5px;
-      margin-top: 10px;
-      border: 2px solid #C9F31D;
+    .image-preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      .preview-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        border: 2px solid #C9F31D;
+      }
+
+      .image-url-input {
+        width: 100%;
+        padding: 5px;
+        background: #2e2e2e;
+        border: 1px solid #C9F31D;
+        color: #fff;
+        text-align: center;
+      }
     }
 
     .tox {
-      border: 1px solid #C9F31D;
+      border: 1px solid #C9F31D !important;
       border-radius: 5px;
+
+      .tox-tbtn {
+        color: #fff !important;
+      }
+
+      .tox-editor-container {
+        background: #2e2e2e !important;
+      }
     }
 
     .btn-post {

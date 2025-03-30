@@ -22,12 +22,6 @@ export default function CreateBlog() {
       return;
     }
     const decoded = jwtDecode(token);
-    console.log('📌 Dữ liệu từ token:', decoded);
-    console.log('🛠 Gửi request:', {
-      url: `${API_URL}/posts`,
-      headers: { Authorization: `Bearer ${token}` },
-      body: { title, image, content },
-    });
     try {
       await axios.post(
         `${API_URL}/posts`,
@@ -41,14 +35,6 @@ export default function CreateBlog() {
     } catch (error) {
       alert('Bạn không có quyền đăng bài!');
     }
-  };
-
-  const handleTinyMCEImageSelect = (url) => {
-    const editor = window.tinymce.activeEditor;
-    if (editor) {
-      editor.insertContent(`<img src="${url}" alt="Chèn ảnh" />`);
-    }
-    setTinyMCEPopupOpen(false);
   };
 
   return (
@@ -87,24 +73,14 @@ export default function CreateBlog() {
             toolbar:
               'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist outdent indent | table image link code',
             content_style: 'body { font-size: 14px; font-family: Arial, sans-serif; }',
-
             file_picker_callback: (callback, value, meta) => {
               if (meta.filetype === 'image') {
                 setTinyMCEPopupOpen(true);
-
                 window.selectImageForTinyMCE = (url) => {
                   callback(url, { alt: 'Hình ảnh tải lên' });
                   setTinyMCEPopupOpen(false);
                 };
               }
-            },
-
-            setup: (editor) => {
-              editor.ui.registry.addMenuItem('image', {
-                text: 'Image...',
-                icon: 'image',
-                onAction: () => setTinyMCEPopupOpen(true),
-              });
             },
           }}
         />
@@ -115,11 +91,11 @@ export default function CreateBlog() {
       </section>
 
       <UploadPopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} onSelect={setImage} />
-      <UploadPopup
-        isOpen={isTinyMCEPopupOpen}
-        onClose={() => setTinyMCEPopupOpen(false)}
-        onSelect={handleTinyMCEImageSelect}
-      />
+      <UploadPopup isOpen={isTinyMCEPopupOpen} onClose={() => setTinyMCEPopupOpen(false)} onSelect={(url) => {
+        if (window.selectImageForTinyMCE) {
+          window.selectImageForTinyMCE(url);
+        }
+      }} />
     </div>
   );
 }
