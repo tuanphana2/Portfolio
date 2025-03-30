@@ -39,7 +39,7 @@ const Admin = () => {
             <nav>
               <ul>
                 <li>
-                  <NavLink to="/admin/manageCustomers" className={({ isActive }) => isActive ? 'active' : ''}>
+                  <NavLink to="/admin/manageBlogs" className={({ isActive }) => isActive ? 'active' : ''}>
                     Quản lý khách hàng
                   </NavLink>
                 </li>
