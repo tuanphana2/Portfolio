@@ -21,7 +21,7 @@ const Admin = () => {
     }
   };
 
-  const isLoginPage = location.pathname === '/admin';
+  const isLoginPage = location.pathname === '/admin/login';
 
   return (
     <div className="admin-layout">
