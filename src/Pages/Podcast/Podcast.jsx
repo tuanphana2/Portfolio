@@ -1,40 +1,42 @@
+import axios from 'axios';
 import { Play } from 'lucide-react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollRestoration } from 'react-router-dom';
 
 import PodcastPlayer from './PodcastPlayer';
-import audio1 from '../../assets/audio/Podcast351.mp3';
-import audio2 from '../../assets/audio/Podcast352.mp3';
 import PageHeader from '../../Components/Shared/PageHeader/PageHeader';
 
 import './podcast.scss';
 
 const Podcast = () => {
-  const setIsPlaying = React.useState(false);
-  const [selectedEpisode, setSelectedEpisode] = React.useState(null);
+  const [episodes, setEpisodes] = useState([]);
+  const [selectedEpisode, setSelectedEpisode] = useState(null);
+  const [expandedEpisodes, setExpandedEpisodes] = useState({});
 
-  const episodes = [
-    {
-      title: 'The Art of Mindful Living The Art of Mindful Living',
-      duration: '45:30',
-      date: 'March 15, 2024',
-      description: 'Exploring the practice of mindfulness in daily life',
-      image: 'https://images.unsplash.com/photo-1593697821252-0c9137d9fc45?auto=format&fit=crop&q=80&w=300&h=300',
-      audioUrl: audio1,
-    },
-    {
-      title: 'Building Resilience',
-      duration: '38:15',
-      date: 'March 8, 2024',
-      description: 'Strategies for developing mental strength and adaptability',
-      image: 'https://images.unsplash.com/photo-1589903308904-1010c2294adc?auto=format&fit=crop&q=80&w=300&h=300',
-      audioUrl: audio2,
-    },
-  ];
+  const API_URL = import.meta.env.VITE_API_URL || 'https://ntd-portfolio-be.onrender.com';
+
+  // Fetch dữ liệu từ backend
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/podcasts`)
+      .then((response) => {
+        const fetchedEpisodes = response.data.map((item, index) => ({
+          title: item.title[0],
+          duration: item['itunes:duration'] ? item['itunes:duration'][0] : 'Unknown',
+          date: item.pubDate[0],
+          description: item.description[0],
+          image: item['itunes:image']
+            ? item['itunes:image'][0].$.href
+            : 'https://via.placeholder.com/300',
+          audioUrl: item.enclosure[0].$.url,
+        }));
+        setEpisodes(fetchedEpisodes);
+      })
+      .catch((error) => console.error('Lỗi lấy RSS:', error));
+  }, []);
 
   const handlePlayEpisode = (episode) => {
     setSelectedEpisode(episode);
-    setIsPlaying(true);
   };
 
   const playPreviousEpisode = () => {
@@ -51,6 +53,14 @@ const Podcast = () => {
     }
   };
 
+  // Toggle trạng thái mở rộng mô tả
+  const toggleExpand = (index) => {
+    setExpandedEpisodes((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
+
   return (
     <>
       <PageHeader heading="Let's Start Something" page="Let's Start Something" />
@@ -58,18 +68,32 @@ const Podcast = () => {
         <div className="episodesContainer">
           <h2 className="sectionTitle">Recent Episodes</h2>
           <div className="episodeList">
-            {episodes.map((episode, index) => (
-              <div key={index} className="episodeItem" >
-                <button className="playButton" onClick={() => handlePlayEpisode(episode)}>
-                  <Play />
-                </button>
-                <div className="episodeDetails">
-                  <p className="episodeNumber">Episode {index + 1}</p>
-                  <h3 className="episodeTitle">{episode.title}</h3>
+            {episodes.length > 0 ? (
+              episodes.map((episode, index) => (
+                <div key={index} className="episodeItem">
+                  <button className="playButton" onClick={() => handlePlayEpisode(episode)}>
+                    <Play />
+                  </button>
+                  <div className="episodeDetails">
+                    <p className="episodeNumber">Episode {index + 1}</p>
+                    <h3 className="episodeTitle">{episode.title}</h3>
+                  </div>
+
+                  <div className="episodeDescription-content">
+                    <p
+                      className={`episodeDescription ${expandedEpisodes[index] ? 'expanded' : 'collapsed'}`}
+                      dangerouslySetInnerHTML={{ __html: episode.description }}
+                    ></p>
+
+                    <button className="toggleButton" onClick={() => toggleExpand(index)}>
+                      {expandedEpisodes[index] ? 'Xem bớt' : 'Xem thêm'}
+                    </button>
+                  </div>
                 </div>
-                <p className="episodeDescription">{episode.description}</p>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>Loading episodes...</p>
+            )}
           </div>
         </div>
 

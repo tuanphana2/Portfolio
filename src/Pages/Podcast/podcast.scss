@@ -36,10 +36,11 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border: 2px solid #c084fc;
+                border: 2px solid #C9F31D;
                 border-radius: 50%;
-                color: #c084fc;
+                color: #C9F31D;
                 background: none;
+
                 svg {
                     width: 24px;
                     height: 24px;
@@ -47,7 +48,9 @@
             }
 
             .episodeDetails {
-                width: 30%;
+                width: 32%;
+                text-align: justify;
+
                 .episodeNumber {
                     font-size: 0.75rem;
                     font-weight: bold;
@@ -67,11 +70,40 @@
                 }
             }
 
-            .episodeDescription {
-                font-size: 0.875rem;
-                color: #FFF;
-                white-space: normal;
-                word-break: break-word;
+            .episodeDescription-content {
+                width: 60%;
+
+                .episodeDescription {
+                    width: 100%;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    transition: all 0.3s ease;
+
+                    a {
+                        color: #FFF;
+                    }
+                }
+
+                .episodeDescription.expanded {
+                    -webkit-line-clamp: unset;
+                }
+
+                .toggleButton {
+                    background: none;
+                    border: none;
+                    color: #C9F31D;
+                    font-weight: bold;
+                    cursor: pointer;
+                    margin-top: 5px;
+                    transition: color 0.2s;
+
+                    &:hover {
+                        color: #fff;
+                    }
+                }
             }
         }
     }

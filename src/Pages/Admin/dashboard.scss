@@ -1,37 +1,40 @@
-body {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-aside {
-  background-color: #1e1e1e;
-  border-right: 2px solid #C9F31D;
-}
-
-h2, h1 {
-  color: #C9F31D;
-}
-
-button {
-  background-color: #C9F31D;
-  color: #121212;
-  border: none;
-
-  &:hover {
-    background-color: darken(#C9F31D, 10%);
+.admin-dashboard-page {
+  body {
+    background-color: #121212;
+    color: #ffffff;
   }
-}
 
-table {
-  background-color: #1e1e1e;
-  color: #ffffff;
+  aside {
+    background-color: #1e1e1e;
+    border-right: 2px solid #C9F31D;
+  }
 
-  th {
+  h2,
+  h1 {
+    color: #C9F31D;
+  }
+
+  button {
     background-color: #C9F31D;
     color: #121212;
+    border: none;
+
+    &:hover {
+      background-color: darken(#C9F31D, 10%);
+    }
   }
 
-  tr:nth-child(even) {
-    background-color: #2a2a2a;
+  table {
+    background-color: #1e1e1e;
+    color: #ffffff;
+
+    th {
+      background-color: #C9F31D;
+      color: #121212;
+    }
+
+    tr:nth-child(even) {
+      background-color: #2a2a2a;
+    }
   }
 }
