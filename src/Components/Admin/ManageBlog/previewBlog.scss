@@ -1,0 +1,64 @@
+.post-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #121212;
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 50px;
+
+    .post-cover {
+        position: relative;
+        width: 100%;
+        max-height: 400px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(3px);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(173, 216, 230, 0.6); // Màu xanh mờ
+        }
+
+        .post-title {
+            position: absolute;
+            font-size: 32px;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .container {
+        width: 100vw;
+        max-width: none;
+        background: #1e1e1e;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        justify-items: center;
+
+        .content {
+            max-width: 720px;
+            font-size: 18px;
+            color: #b0b0b0;
+            line-height: 1.8;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+    }
+}

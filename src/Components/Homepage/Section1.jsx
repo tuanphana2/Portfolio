@@ -1,8 +1,6 @@
 import React from 'react';
 import { ScrollRestoration } from 'react-router-dom';
 
-// import serDv1 from '../../assets/img/home/165.jpg';
-
 const listItems = [
   {
     text: '1. Bạn đang tìm kiếm con đường thành công nhưng mãi loay hoay làm bạn kiệt quệ mà mất phương hướng? Hoặc Bạn đã đạt được một mức độ thành công trong sự nghiệp mà hầu hết mọi người chỉ mơ ước, nhưng bạn quá BẬN, Bạn đang khao khát được rảnh, những cái thứ bạn tạo ra ấy nó đang giữ bạn lại.',

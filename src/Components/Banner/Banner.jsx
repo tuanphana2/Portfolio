@@ -68,15 +68,11 @@ const Banner = () => {
           <div className="row g-4">
             <div className="col-lg-8">
               <div className="banner__content">
-                <Link to={''} className="bn__currently">
-                  <span className="d-block">Currently available for freelance</span>
-                  <span className="d-flex gap-4 align-items-center">
-                    worldwide
-                    <i className="bi bi-arrow-up-right"></i>
-                  </span>
-                </Link>
                 <h1>
-                  <span className="hone"> Creative Visual</span>
+                <h5>BẠN ĐÃ ĐẠT ĐƯỢC</h5>
+                <h2>CUỘC SỐNG VÀ SỰ NGHIỆP MƠ ƯỚC CHƯA HAY</h2>
+                <h2>VẪN ĐANG LOAY HOAY TÌM KIẾM ĐƯỜNG?</h2>
+                <h5>⇒ GIẢI DOANH NHÂN CHÂU Á TẠI MALAYSIA  - ĐÃ ĐẾN 40 QUỐC GIA</h5>
                   <div className="designer-slider-wrapper">
                     <Swiper
                       slidesPerView={1}
@@ -99,15 +95,6 @@ const Banner = () => {
                     </Swiper>
                   </div>
                 </h1>
-                <div className="video__area">
-                  <img src={bnArrow} className="vid__arrow" alt="img" />
-                  <button onClick={openLightbox} className="video__80 video-btn">
-                    <i>
-                      <PlayFill />
-                    </i>
-                  </button>
-                  <span className="proces">Work Process</span>
-                </div>
               </div>
             </div>
             <div className="col-lg-4">

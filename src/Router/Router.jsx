@@ -4,6 +4,7 @@ import About from '../Components/About/About';
 import CreateBlog from '../Components/Admin/ManageBlog/CreateBlog';
 import EditBlog from '../Components/Admin/ManageBlog/EditBlog';
 import ManageBlogs from '../Components/Admin/ManageBlog/ManageBlogs';
+import PreviewBlog from '../Components/Admin/ManageBlog/PreviewBlog';
 import Root from '../Layouts/Root';
 import Admin from '../Pages/Admin/Admin';
 import Dashboard from '../Pages/Admin/Dashboard';
@@ -91,5 +92,9 @@ export const router = createBrowserRouter([
         element: <ProtectedRoute element={<EditBlog />} />,
       },
     ],
+  },
+  {
+    path: '/admin/preview',
+    element: <ProtectedRoute element={<PreviewBlog />} />,
   },
 ]);

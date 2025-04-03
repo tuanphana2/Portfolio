@@ -4,13 +4,13 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   position: relative;
   overflow: hidden;
 
   @media (max-width: 768px) {
     background-size: cover;
-    background-position: calc(80% - 20vw) top; // Giữ phần quan trọng của hình nền
+    background-position: calc(80% - 20vw) top;
     background-attachment: scroll;
   }
 }
@@ -25,13 +25,25 @@
   background: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 120%);
   z-index: -1;
   pointer-events: none;
-  @media  (max-width: 768px) {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 250%);;
+
+  @media (max-width: 768px) {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 250%);
+    ;
   }
 }
 
 .banner__content {
-  padding: 140px 0 180px;
+  padding: 200px 0 160px;
+
+  h1 {
+    text-align: center;
+    justify-items: center;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
 
   .bn__currently {
     font-size: 24px;
@@ -49,19 +61,6 @@
 
   h1 {
     font-size: 116px;
-    margin-bottom: 50px;
-  }
-
-  .video__area {
-    gap: 24px;
-    align-items: center;
-    display: flex;
-
-    .proces {
-      font-size: 20px;
-      color: var(--white);
-      width: 67px;
-    }
   }
 
   @include breakpoint(max-xxxl) {
@@ -83,15 +82,6 @@
       font-size: 86px;
       margin-bottom: 50px;
     }
-
-    .video__area {
-      gap: 24px;
-
-      .proces {
-        font-size: 20px;
-        width: 67px;
-      }
-    }
   }
 
   @include breakpoint(max-xl) {
@@ -111,15 +101,6 @@
       font-size: 68px;
       margin-bottom: 50px;
     }
-
-    .video__area {
-      gap: 24px;
-
-      .proces {
-        font-size: 20px;
-        width: 67px;
-      }
-    }
   }
 
   @include breakpoint(max-md) {
@@ -134,15 +115,6 @@
     h1 {
       font-size: 48px;
       margin-bottom: 40px;
-    }
-
-    .video__area {
-      gap: 24px;
-
-      .proces {
-        font-size: 20px;
-        width: 67px;
-      }
     }
   }
 
@@ -159,15 +131,6 @@
       font-size: 38px;
       margin-bottom: 30px;
     }
-
-    .video__area {
-      gap: 24px;
-
-      .proces {
-        font-size: 20px;
-        width: 67px;
-      }
-    }
   }
 
   @include breakpoint(max-sm) {
@@ -180,20 +143,6 @@
     h1 {
       font-size: 34px;
       margin-bottom: 30px;
-    }
-
-    .video__area {
-      gap: 24px;
-
-      .video__80 {
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
-      }
-
-      .proces {
-        font-size: 16px;
-      }
     }
   }
 }
@@ -408,15 +357,16 @@
 
 //banner
 .designer-slider-wrapper {
-  width: 80%;
+  width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
   font-size: 80px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
 }
 
 .designer-slide-item {
+  font-family: "DIN Condensed", Sans-serif;
   width: 100%;
   height: 100%;
   background-size: 80% 85%;
@@ -427,7 +377,7 @@
   align-items: flex-end;
   justify-content: center;
   color: white;
-  font-size: 80%;
+  font-size: 80px;
   font-weight: bold;
   position: relative;
   cursor: pointer;

@@ -37,6 +37,11 @@ export default function CreateBlog() {
     }
   };
 
+  const previewPost = () => {
+    sessionStorage.setItem('previewPost', JSON.stringify({ title, image, content }));
+    window.open('/admin/preview', '_blank');
+  };
+
   return (
     <div className="create-blog-page">
       <h1 className="create-blog-title">Tạo bài viết mới</h1>
@@ -48,7 +53,9 @@ export default function CreateBlog() {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <button className='btn-choose' onClick={() => setPopupOpen(true)}>Chọn ảnh</button>
+        <button className="btn-choose" onClick={() => setPopupOpen(true)}>
+          Chọn ảnh
+        </button>
         {image && (
           <div className="image-preview">
             <img src={image} alt="Ảnh đã chọn" className="preview-image" />
@@ -84,18 +91,27 @@ export default function CreateBlog() {
             },
           }}
         />
-
-        <button className="btn-post" onClick={savePost} disabled={uploading}>
-          {uploading ? 'Đang tải ảnh...' : 'Đăng bài'}
-        </button>
+        
+        <div className="btn-section">
+          <button onClick={previewPost} className="btn-preview">
+            Xem trước
+          </button>
+          <button className="btn-post" onClick={savePost} disabled={uploading}>
+            {uploading ? 'Đang tải ảnh...' : 'Đăng bài'}
+          </button>
+        </div>
       </section>
 
       <UploadPopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} onSelect={setImage} />
-      <UploadPopup isOpen={isTinyMCEPopupOpen} onClose={() => setTinyMCEPopupOpen(false)} onSelect={(url) => {
-        if (window.selectImageForTinyMCE) {
-          window.selectImageForTinyMCE(url);
-        }
-      }} />
+      <UploadPopup
+        isOpen={isTinyMCEPopupOpen}
+        onClose={() => setTinyMCEPopupOpen(false)}
+        onSelect={(url) => {
+          if (window.selectImageForTinyMCE) {
+            window.selectImageForTinyMCE(url);
+          }
+        }}
+      />
     </div>
   );
 }

@@ -54,10 +54,11 @@
 
     .content {
       max-width: 720px;
-      font-size: 18px; // Tăng kích thước chữ để đọc dễ hơn
+      font-size: 18px;
       color: #b0b0b0;
-      line-height: 1.8; // Giãn dòng thoáng hơn (có thể chỉnh thành 1.7 hoặc 2 nếu cần)
+      line-height: 1.8;
       text-align: left;
+      white-space: pre-wrap;
     }
   }
 }

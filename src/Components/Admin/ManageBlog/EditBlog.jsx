@@ -57,6 +57,11 @@ export default function EditBlog() {
 
   if (loading) return <p>Đang tải bài viết...</p>;
 
+  const previewPost = () => {
+    sessionStorage.setItem('previewPost', JSON.stringify({ title, image, content }));
+    window.open('/admin/preview', '_blank');
+  };
+
   return (
     <div className="edit-blog-page">
       <h1 className="edit-blog-title">Chỉnh sửa bài viết</h1>
@@ -68,7 +73,9 @@ export default function EditBlog() {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <button className='btn-choose' onClick={() => setPopupOpen(true)}>Chọn ảnh</button>
+        <button className="btn-choose" onClick={() => setPopupOpen(true)}>
+          Chọn ảnh
+        </button>
         {image && (
           <div className="image-preview">
             <img src={image} alt="Ảnh đã chọn" className="preview-image" />
@@ -104,18 +111,27 @@ export default function EditBlog() {
             },
           }}
         />
-
-        <button className="btn-update" onClick={updatePost} disabled={uploading}>
-          {uploading ? 'Đang cập nhật...' : 'Cập nhật bài viết'}
-        </button>
+        
+        <div className="btn-section">
+          <button onClick={previewPost} className="btn-preview">
+            Xem trước
+          </button>
+          <button className="btn-update" onClick={updatePost} disabled={uploading}>
+            {uploading ? 'Đang cập nhật...' : 'Cập nhật bài viết'}
+          </button>
+        </div>
       </section>
 
       <UploadPopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} onSelect={setImage} />
-      <UploadPopup isOpen={isTinyMCEPopupOpen} onClose={() => setTinyMCEPopupOpen(false)} onSelect={(url) => {
-        if (window.selectImageForTinyMCE) {
-          window.selectImageForTinyMCE(url);
-        }
-      }} />
+      <UploadPopup
+        isOpen={isTinyMCEPopupOpen}
+        onClose={() => setTinyMCEPopupOpen(false)}
+        onSelect={(url) => {
+          if (window.selectImageForTinyMCE) {
+            window.selectImageForTinyMCE(url);
+          }
+        }}
+      />
     </div>
   );
 }
