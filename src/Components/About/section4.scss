@@ -1,6 +1,6 @@
 .section4 {
     width: 100%;
-    background: #1e1e1e; // Chuyển sang giao diện tối
+    background: #121212; // Nền tối
     padding: 60px 20px;
     display: flex;
     justify-content: center;
@@ -16,7 +16,7 @@
     h2 {
         font-size: 26px;
         font-weight: bold;
-        color: #fbd46d; // Màu vàng nổi bật
+        color: #C9F31D; // Màu vàng chanh nổi bật cho tiêu đề
         margin-bottom: 20px;
         line-height: 1.5;
         text-transform: uppercase;
@@ -24,7 +24,7 @@
 
     p {
         font-size: 18px;
-        color: #ddd;
+        color: #ddd; // Màu chữ sáng hơn để dễ đọc trên nền tối
         line-height: 1.8;
         text-align: justify;
         margin-bottom: 15px;

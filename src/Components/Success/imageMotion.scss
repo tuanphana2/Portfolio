@@ -41,17 +41,12 @@
 .full-image {
   width: 100%;
   max-width: 800px;
-  /* Giới hạn độ rộng của ảnh */
   max-height: 600px;
-  /* Giới hạn độ cao của ảnh */
   object-fit: cover;
-  /* Đảm bảo ảnh đầy đủ mà không bị méo */
   border-radius: 1rem;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-  /* Shadow cho ảnh phóng to */
 }
 
-/* Nút điều hướng Previous và Next */
 .popup-nav-btn {
   position: absolute;
   top: 50%;

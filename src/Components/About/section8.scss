@@ -1,5 +1,5 @@
 .section8 {
-    background: #333; // Màu xám đen chủ đạo
+    background: #333; // Nền xám đen chủ đạo
     color: #fff;
     padding: 60px 40px;
     text-align: center;
@@ -8,7 +8,7 @@
     h4 {
         font-size: 32px;
         font-weight: bold;
-        color: #ffcc00; // Màu vàng nổi bật
+        color: #C9F31D; // Màu vàng chanh nổi bật
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 30px;
@@ -20,14 +20,14 @@
             display: block;
             width: 50px;
             height: 4px;
-            background: #ffcc00;
+            background: #C9F31D; // Màu vàng chanh cho điểm nhấn
             margin: 8px auto 0;
             border-radius: 2px;
         }
     }
 
     .row {
-        background: #444;
+        background: #444; // Màu xám đen hơi sáng hơn
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
@@ -46,16 +46,16 @@
         h6 {
             font-size: 22px;
             font-weight: bold;
-            color: #e74c3c; // Màu đỏ nổi bật
+            color: #C9F31D; // Màu vàng chanh cho tiêu đề phụ
             margin-bottom: 10px;
-            border-bottom: 2px solid #e74c3c;
+            border-bottom: 2px solid #C9F31D; // Dòng dưới màu vàng chanh
             display: inline-block;
             padding-bottom: 5px;
         }
 
         p {
             font-size: 18px;
-            color: #ddd;
+            color: #ddd; // Chữ sáng màu xám dễ đọc trên nền tối
             line-height: 1.6;
         }
     }
@@ -65,7 +65,7 @@
         font-size: 26px;
         font-weight: bold;
         text-transform: uppercase;
-        color: #ffcc00; // Màu vàng nổi bật
+        color: #C9F31D; // Màu vàng chanh cho điểm nhấn
         text-align: center;
 
         p {
@@ -73,7 +73,7 @@
             font-size: 22px;
             font-weight: 900;
             color: #fff; // Trắng để nổi bật
-            background: linear-gradient(90deg, #ffcc00, #ff8800);
+            background: linear-gradient(90deg, #C9F31D, #ff8800); // Dùng vàng chanh và cam
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px;

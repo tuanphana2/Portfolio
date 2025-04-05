@@ -1,5 +1,5 @@
 .section6 {
-    background: #1e1e1e; // Màu nền xám đen
+    background: #121212; // Màu nền xám đen (dark mode)
     width: 100%;
     padding: 80px 40px;
 
@@ -16,7 +16,7 @@
         .content-1 {
             text-align: justify;
             font-size: 16px;
-            color: #ddd;
+            color: #ddd; // Chữ sáng dễ đọc trên nền tối
             margin-bottom: 10px;
             line-height: 1.6;
         }
@@ -27,7 +27,7 @@
             text-align: justify;
             font-size: 22px;
             font-weight: bold;
-            color: #ffcc00;
+            color: #C9F31D; // Màu vàng chanh nổi bật
             text-transform: uppercase;
             margin-bottom: 10px;
             line-height: 1.5;
@@ -40,18 +40,18 @@
         p {
             font-size: 17px;
             line-height: 1.8;
-            color: #bbb;
+            color: #bbb; // Màu chữ sáng nhẹ nhàng
             margin-bottom: 15px;
         }
 
         strong {
-            color: #ff5f5f;
+            color: #ff5f5f; // Màu đỏ nhấn mạnh
         }
 
         .highlight-text {
             font-size: 30px;
             font-weight: bold;
-            color: #ffcc00;
+            color: #C9F31D; // Màu vàng chanh nhấn mạnh
             text-transform: uppercase;
             margin-top: 30px;
             line-height: 1.4;
@@ -61,11 +61,11 @@
             font-style: italic;
             font-size: 28px;
             display: inline-block;
-            color: #f5f5f5;
+            color: #f5f5f5; // Màu trắng sáng
         }
 
         .brush-effect {
-            background: rgba(255, 92, 92, 0.8);
+            background: rgba(201, 243, 29, 0.8); // Nền màu vàng chanh nhẹ
             padding: 5px 10px;
             border-radius: 5px;
             font-weight: bold;
@@ -78,7 +78,7 @@
             font-size: 20px;
             font-weight: 500;
             margin-top: 20px;
-            color: #ccc;
+            color: #ccc; // Màu xám sáng
         }
     }
 

@@ -16,7 +16,7 @@ import './imageMotion.scss';
 const images = [img1, img2, img3, img4, img5, img6, img7];
 
 export default function ImageCarousel() {
-  const [selectedIndex, setSelectedIndex] = useState(0); // Set initial index to 0
+  const [selectedIndex, setSelectedIndex] = useState(null); // Set initial index to 0
 
   const nextImage = (e) => {
     e.stopPropagation();

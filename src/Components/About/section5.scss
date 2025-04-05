@@ -1,5 +1,5 @@
 .section5 {
-    background-color: #222; // Đổi sang nền tối
+    background-color: #121212; // Đổi sang nền tối cho dark mode
     padding: 80px 40px;
     text-align: center;
     display: flex;
@@ -17,7 +17,7 @@
     h2 {
         font-size: 32px;
         font-weight: bold;
-        color: #fbd46d; // Màu vàng nhấn mạnh
+        color: #C9F31D; // Màu vàng chanh nhấn mạnh
         margin-bottom: 20px;
         text-transform: uppercase;
         line-height: 1.4;
@@ -26,7 +26,7 @@
 
     p {
         font-size: 17px;
-        color: #ddd; // Chữ xám sáng dễ đọc trên nền tối
+        color: #ddd; // Chữ sáng, dễ đọc trên nền tối
         line-height: 1.8;
         text-align: justify;
         max-width: 1030px;
@@ -47,7 +47,7 @@
     .divider {
         width: 100px;
         height: 4px;
-        background-color: #ff7043; // Màu cam nhấn mạnh
+        background-color: #C9F31D; // Màu vàng chanh nhấn mạnh
         margin: 25px auto;
         border-radius: 2px;
     }
@@ -55,7 +55,7 @@
     .highlight-text {
         font-size: 26px;
         font-weight: bold;
-        color: #ff7043; // Màu cam chủ đạo
+        color: #C9F31D; // Màu vàng chanh chủ đạo
         text-transform: uppercase;
         margin-top: 35px;
         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
@@ -70,7 +70,7 @@
         li {
             font-size: 18px;
             font-weight: bold;
-            color: #ddd;
+            color: #ddd; // Màu chữ sáng hơn để dễ đọc trên nền tối
             margin: 12px 0;
             position: relative;
             padding-left: 28px;
@@ -78,7 +78,7 @@
 
         li::before {
             content: '✔';
-            color: #ff7043; // Màu cam nhấn mạnh
+            color: #C9F31D; // Màu vàng chanh cho dấu chấm
             font-size: 20px;
             font-weight: bold;
             display: inline-block;

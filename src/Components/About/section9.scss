@@ -1,6 +1,6 @@
 .section9 {
     padding: 100px 0;
-    background-color: #222;
+    background-color: #222; // Màu nền tối
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -15,7 +15,7 @@
         .main-title {
             font-size: 38px;
             font-weight: bold;
-            color: #fbd46d;
+            color: #C9F31D; // Màu vàng chanh nổi bật
             margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -26,7 +26,7 @@
                 display: block;
                 width: 60px;
                 height: 4px;
-                background: #fbd46d;
+                background: #C9F31D; // Màu vàng chanh cho điểm nhấn
                 margin: 8px auto 0;
                 border-radius: 2px;
             }
@@ -34,7 +34,7 @@
 
         .sub-title {
             font-size: 18px;
-            color: #ddd;
+            color: #ddd; // Màu sáng để dễ đọc trên nền tối
             font-style: italic;
         }
     }
@@ -46,8 +46,8 @@
     }
 
     .content-box {
-        background-color: #333;
-        color: #fff;
+        background-color: #333; // Nền tối hơn cho khối nội dung
+        color: #fff; // Chữ sáng để dễ đọc
         padding: 40px;
         border-radius: 12px;
         box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
@@ -58,7 +58,7 @@
             font-size: 28px;
             font-weight: bold;
             margin-bottom: 20px;
-            color: #fbd46d;
+            color: #C9F31D; // Màu vàng chanh cho tiêu đề
             text-transform: uppercase;
             text-align: center;
         }
@@ -76,7 +76,7 @@
                 left: 0;
                 top: 3px;
                 font-size: 18px;
-                color: #fbd46d;
+                color: #C9F31D; // Màu vàng chanh cho dấu check
                 font-weight: bold;
             }
 
@@ -89,7 +89,7 @@
     h3 {
         margin-top: 30px;
         font-size: 22px;
-        color: #fbd46d;
+        color: #C9F31D; // Màu vàng chanh cho tiêu đề
         text-align: center;
     }
 }
