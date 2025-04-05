@@ -1,20 +1,21 @@
 import React from 'react';
 import './section3.scss';
 
+import portraitImg from '../../assets/img/banner/0596.jpg';
+import shopImg from '../../assets/img/banner/123.jpg';
+import scubaImg from '../../assets/img/banner/1234.jpg';
+import beachImg from '../../assets/img/banner/246.jpg';
+
 const Section3 = () => {
   return (
     <section className="section3">
       <div className="container">
         <div className="content">
           <div className="image-group">
-            <img src="/src/assets/img/banner/246.jpg" alt="Beach" className="main-img" />
-            <img src="/src/assets/img/banner/1234.jpg" alt="Scuba" className="overlay-img scuba" />
-            <img src="/src/assets/img/banner/123.jpg" alt="Shop" className="overlay-img shop" />
-            <img
-              src="/src/assets/img/banner/0596.jpg"
-              alt="Portrait"
-              className="overlay-img portrait"
-            />
+          <img src={beachImg} alt="Beach" className="main-img" />
+      <img src={scubaImg} alt="Scuba" className="overlay-img scuba" />
+      <img src={shopImg} alt="Shop" className="overlay-img shop" />
+      <img src={portraitImg} alt="Portrait" className="overlay-img portrait" />
           </div>
 
           <div className="text-content">
