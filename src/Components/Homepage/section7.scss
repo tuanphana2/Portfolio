@@ -45,7 +45,7 @@
                 font-size: 36px;
                 letter-spacing: 1.5px;
                 font-weight: bold;
-                color: #ff7043; // Nhấn mạnh tiêu đề
+                color: #C9F31D; // Màu vàng sáng cho tiêu đề
 
                 @media (max-width: 768px) {
                     font-size: 18px;
@@ -68,8 +68,8 @@
         .read-story-btn {
             display: inline-block;
             background: transparent;
-            color: #ff7043; // Màu cam nổi bật
-            border: 2px solid #ff7043;
+            color: #C9F31D; // Màu vàng sáng cho nút
+            border: 2px solid #C9F31D;
             padding: 12px 24px;
             font-size: 14px;
             text-transform: uppercase;
@@ -80,8 +80,8 @@
             width: 100%;
 
             &:hover {
-                background: #ff7043;
-                color: #fff;
+                background: #C9F31D; // Nền vàng khi hover
+                color: #121212; // Màu chữ tối khi hover
             }
 
             @media (max-width: 768px) {
@@ -97,7 +97,7 @@
             max-height: 350px;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(255, 112, 67, 0.4); // Đổ bóng cam nhẹ
+            box-shadow: 0 8px 24px rgba(201, 243, 29, 0.4); // Đổ bóng màu vàng sáng
 
             @media (max-width: 768px) {
                 max-height: 250px;

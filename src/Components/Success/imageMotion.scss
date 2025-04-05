@@ -1,76 +1,77 @@
-.image-carousel {
-    @apply relative flex justify-center items-center h-screen bg-gray-900 overflow-hidden;
-  
-    .slider {
-      @apply flex flex-nowrap space-x-6;
-      width: max-content;
-      animation: scroll 24s linear infinite;
-    }
-  
-    .image {
-      @apply w-40 h-40 cursor-pointer rounded-lg shadow-lg transition-transform;
-      
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  
-    /* 🔹 Popup Overlay */
-    .popup {
-      @apply fixed inset-0 flex justify-center items-center bg-black bg-opacity-90 z-50;
-      
-      /* 🔥 Hiệu ứng mờ nền */
-      backdrop-filter: blur(10px);
-      animation: fadeIn 0.3s ease-in-out;
-      
-      .popup-content {
-        @apply relative flex items-center;
-        animation: scaleIn 0.3s ease-in-out;
-        
-        .popup-image {
-          @apply max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl;
-        }
-  
-        .btn {
-          @apply absolute p-3 text-white bg-gray-800 rounded-full transition hover:bg-gray-600;
-        }
-  
-        .prev {
-          @apply left-[-60px] md:left-[-80px];
-        }
-  
-        .next {
-          @apply right-[-60px] md:right-[-80px];
-        }
-      }
-    }
+/* .imageMotion.scss */
+.carousel-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* Đảm bảo popup bao quanh ảnh phóng to có thể căn giữa */
+.fixed-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  /* Màu nền tối với độ mờ */
+  z-index: 9999;
+  /* Đảm bảo popup luôn ở trên cùng */
+}
+
+/* Các ảnh phóng to có shadow và căn giữa */
+.full-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  /* Tạo hiệu ứng shadow cho ảnh */
+}
+
+/* Ảnh phóng to */
+.full-image {
+  width: 100%;
+  max-width: 800px;
+  /* Giới hạn độ rộng của ảnh */
+  max-height: 600px;
+  /* Giới hạn độ cao của ảnh */
+  object-fit: cover;
+  /* Đảm bảo ảnh đầy đủ mà không bị méo */
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  /* Shadow cho ảnh phóng to */
+}
+
+/* Nút điều hướng Previous và Next */
+.popup-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 12px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
   }
-  
-  /* 🔥 Animation hiệu ứng */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes scaleIn {
-    from {
-      transform: scale(0.8);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-  
-  @keyframes scroll {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-  
+}
+
+.popup-nav-btn.left {
+  left: -50px;
+}
+
+.popup-nav-btn.right {
+  right: -50px;
+}

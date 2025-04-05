@@ -31,7 +31,6 @@
   width: 100%;
   height: 100px;
   z-index: 99;
-  border-bottom: 1px solid var(--cusborder);
   .container {
     @include breakpoint(xl) {
       max-width: 1805px;
@@ -45,7 +44,6 @@
     width: 1px;
     height: 100%;
     content: '';
-    background: var(--cusborder);
   }
   &::after {
     position: absolute;
@@ -54,7 +52,6 @@
     width: 1px;
     height: 100%;
     content: '';
-    background: var(--cusborder);
     @include breakpoint(max-xxxl) {
       right: calc(20% - 30px);
     }

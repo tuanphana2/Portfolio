@@ -7,11 +7,11 @@ const Section3 = () => {
       <div className="container">
         <div className="content">
           <div className="image-group">
-            <img src="/src/assets/img/project/pro1.png" alt="Beach" className="main-img" />
-            <img src="/src/assets/img/project/pro1.png" alt="Scuba" className="overlay-img scuba" />
-            <img src="/src/assets/img/project/pro1.png" alt="Shop" className="overlay-img shop" />
+            <img src="/src/assets/img/banner/246.jpg" alt="Beach" className="main-img" />
+            <img src="/src/assets/img/banner/1234.jpg" alt="Scuba" className="overlay-img scuba" />
+            <img src="/src/assets/img/banner/123.jpg" alt="Shop" className="overlay-img shop" />
             <img
-              src="/src/assets/img/project/pro1.png"
+              src="/src/assets/img/banner/0596.jpg"
               alt="Portrait"
               className="overlay-img portrait"
             />

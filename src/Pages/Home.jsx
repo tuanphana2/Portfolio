@@ -31,7 +31,7 @@ const Home = () => {
       <Section3 />
       <Section4 />
       <Section5 />
-      <Section6 />
+      {/* <Section6 /> */}
       <Section7 />
       <FreeTraining />
       <ScrollRestoration />

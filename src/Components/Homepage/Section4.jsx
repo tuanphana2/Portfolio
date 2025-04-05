@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollRestoration } from 'react-router-dom';
 
-import serDv1 from '../../assets/img/project/ser-dv1.png';
+import serDv1 from '../../assets/img/banner/211.jpg';
 
 const listItems = [
   {

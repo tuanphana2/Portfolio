@@ -1,40 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Facebook, Twitter, Linkedin, Globe, Instagram, PlayFill } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import bannerMan from '../../assets/img/banner/banner-bg(NTD) (2).png';
-import bnArrow from '../../assets/img/banner/bn-arrow.png';
-import dial from '../../assets/img/banner/dial.png';
-import scrollDown from '../../assets/img/banner/scroll-down.png';
 import slideBarBackground from '../../assets/img/banner/slide-bar-background.png';
-import VideoPlay from '../Shared/VideoPlay/VideoPlay';
 import "swiper/css";
-
-const socalIcon = [
-  {
-    id: 1,
-    icon: <Facebook />,
-    link: 'https://www.facebook.com/thaiduybe',
-  },
-  {
-    id: 2,
-    icon: <Twitter />,
-  },
-  {
-    id: 3,
-    icon: <Linkedin />,
-  },
-  {
-    id: 4,
-    icon: <Globe />,
-  },
-  {
-    id: 5,
-    icon: <Instagram />,
-  },
-];
 
 const levels = [
   'THU NHẬP CAO',
@@ -48,7 +18,6 @@ const levels = [
 ];
 
 const Banner = () => {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
   const [position, setPosition] = useState(false);
 
   useEffect(() => {
@@ -56,10 +25,6 @@ const Banner = () => {
       setPosition(true);
     }
   }, []);
-
-  const openLightbox = () => {
-    setLightboxOpen(true);
-  };
 
   return (
     <div className="banner__section">
@@ -104,49 +69,6 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        <div className="banner__leftinfo">
-          <div className="left__infomobile">
-            <Link to={''}>
-              <img src={dial} alt="img" />
-            </Link>
-            <Link to={''}>(+02)-574-328-301</Link>
-          </div>
-          <div className="right__infoscroll">
-            <Link className="scroll">scroll down</Link>
-            <Link className="scroll__bar">
-              <img src={scrollDown} alt="img" />
-            </Link>
-          </div>
-        </div>
-        <div className="banner__rightinfo">
-          <div className="right__infoscroll">
-            <Link to={''} className="scroll">
-              Follow Me
-            </Link>
-            <Link to={''} className="scroll__bar">
-              <img src={scrollDown} alt="img" />
-            </Link>
-          </div>
-          <div className="banner__xlsocial">
-            <ul className="banner__soci d-grid justify-content-center">
-              {socalIcon.map(({ icon, id, link }) => {
-                return (
-                  <li key={id}>
-                    <Link to={link} target="_blank" rel="noopener noreferrer">
-                      <i>{icon}</i>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
-        {lightboxOpen && (
-          <VideoPlay
-            setLightboxOpen={setLightboxOpen}
-            url="https://www.youtube.com/embed/x3XuYSbScaw?si=5ixIxy8yXwdFVBPM"
-          />
-        )}
       </section>
     </div>
   );

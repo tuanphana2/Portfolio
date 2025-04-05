@@ -64,7 +64,7 @@ const Success = () => {
           {/* <h2 className="highlighted-title"></h2> */}
         </div>
       </section>
-      <section className="section-2">
+      {/* <section className="section-2">
         <div className="container">
           <div className="stories-slider-wrapper">
             <Slider {...sliderSettings} className="stories-slider">
@@ -77,7 +77,7 @@ const Success = () => {
             </Slider>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="section-3">
         <div className="container">
           <div className="section-header">
